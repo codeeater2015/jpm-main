@@ -1,0 +1,35 @@
+{% extends "main.html.twig" %}
+{% block sidebar_close %}page-sidebar-closed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="project-container">
+                {{ include('tpl/_loading.html.twig')}}
+            </div>
+        </div>
+    </div
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {# <script type="text/javascript">
+        window.userId = "{{ user.id }}";
+        console.log("user id has been received");
+        console.log(window.userId);
+    </script> #}
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/project.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/project/project-edit.modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/project/project-create.modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/project/project.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/project/project.react.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}

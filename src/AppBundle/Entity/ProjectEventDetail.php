@@ -1,0 +1,540 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * ProjectEventDetail
+ *
+ * @ORM\Table(name="tbl_project_event_detail")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectEventDetailRepository")
+ * @UniqueEntity(fields={"proVoterId","eventId"},message="This attendee already added on this event.", errorPath="proVoterId")
+ */
+class ProjectEventDetail
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="event_detail_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $eventDetailId;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="event_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $eventId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="pro_voter_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $proVoterId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pro_id_code", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $proIdCode;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="pro_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $proId;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="has_attended", type="integer")
+     */
+    private $hasAttended;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="has_new_id", type="integer")
+     */
+    private $hasNewId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="has_claimed", type="integer")
+     */
+    private $hasClaimed;
+
+     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="attended_at", type="datetime")
+     */
+    private $attendedAt;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="claimed_at", type="datetime")
+     */
+    private $claimedAt;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="verify_at", type="datetime")
+     */
+    private $verifyAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="created_by", type="string", length=150)
+     */
+    private $createdBy;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+
+    private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="updated_by", type="string", length=150)
+     */
+    private $updatedBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=256)
+     */
+    private $remarks;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     * @Assert\NotBlank()
+     */
+    private $status;
+
+    /**
+     * Get eventDetailId
+     *
+     * @return integer
+     */
+    public function getEventDetailId()
+    {
+        return $this->eventDetailId;
+    }
+
+    /**
+     * Set proVoterId
+     *
+     * @param integer $proVoterId
+     *
+     * @return ProjectEventDetail
+     */
+    public function setProVoterId($proVoterId)
+    {
+        $this->proVoterId = $proVoterId;
+    
+        return $this;
+    }
+
+    /**
+     * Get proVoterId
+     *
+     * @return integer
+     */
+    public function getProVoterId()
+    {
+        return $this->proVoterId;
+    }
+
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     *
+     * @return ProjectEventDetail
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+    
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return ProjectEventDetail
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set eventId
+     *
+     * @param integer $eventId
+     *
+     * @return ProjectEventDetail
+     */
+    public function setEventId($eventId)
+    {
+        $this->eventId = $eventId;
+    
+        return $this;
+    }
+
+    /**
+     * Get eventId
+     *
+     * @return integer
+     */
+    public function getEventId()
+    {
+        return $this->eventId;
+    }
+
+    /**
+     * Set proId
+     *
+     * @param integer $proId
+     *
+     * @return ProjectEventDetail
+     */
+    public function setProId($proId)
+    {
+        $this->proId = $proId;
+    
+        return $this;
+    }
+
+    /**
+     * Get proId
+     *
+     * @return integer
+     */
+    public function getProId()
+    {
+        return $this->proId;
+    }
+
+    /**
+     * Set hasAttended
+     *
+     * @param integer $hasAttended
+     *
+     * @return ProjectEventDetail
+     */
+    public function setHasAttended($hasAttended)
+    {
+        $this->hasAttended = $hasAttended;
+
+        return $this;
+    }
+
+    /**
+     * Get hasAttended
+     *
+     * @return integer
+     */
+    public function getHasAttended()
+    {
+        return $this->hasAttended;
+    }
+
+    /**
+     * Set hasNewId
+     *
+     * @param integer $hasNewId
+     *
+     * @return ProjectEventDetail
+     */
+    public function setHasNewId($hasNewId)
+    {
+        $this->hasNewId = $hasNewId;
+
+        return $this;
+    }
+
+    /**
+     * Get hasNewId
+     *
+     * @return integer
+     */
+    public function getHasNewId()
+    {
+        return $this->hasNewId;
+    }
+
+    /**
+     * Set hasClaimed
+     *
+     * @param integer $hasClaimed
+     *
+     * @return ProjectEventDetail
+     */
+    public function setHasClaimed($hasClaimed)
+    {
+        $this->hasClaimed = $hasClaimed;
+
+        return $this;
+    }
+
+    /**
+     * Get hasClaimed
+     *
+     * @return integer
+     */
+    public function getHasClaimed()
+    {
+        return $this->hasClaimed;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return ProjectEventDetail
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return ProjectEventDetail
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return ProjectEventDetail
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param string $updatedBy
+     *
+     * @return ProjectEventDetail
+     */
+    public function setUpdatedBy($updatedBy)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return string
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
+    }
+
+    /**
+     * Set attendedAt
+     *
+     * @param \DateTime $attendedAt
+     *
+     * @return ProjectEventDetail
+     */
+    public function setAttendedAt($attendedAt)
+    {
+        $this->attendedAt = $attendedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get attendedAt
+     *
+     * @return \DateTime
+     */
+    public function getAttendedAt()
+    {
+        return $this->attendedAt;
+    }
+
+    /**
+     * Set claimedAt
+     *
+     * @param \DateTime $claimedAt
+     *
+     * @return ProjectEventDetail
+     */
+    public function setClaimedAt($claimedAt)
+    {
+        $this->claimedAt = $claimedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get claimedAt
+     *
+     * @return \DateTime
+     */
+    public function getClaimedAt()
+    {
+        return $this->claimedAt;
+    }
+
+    /**
+     * Set verifyAt
+     *
+     * @param \DateTime $verifyAt
+     *
+     * @return ProjectEventDetail
+     */
+    public function setVerifyAt($verifyAt)
+    {
+        $this->verifyAt = $verifyAt;
+
+        return $this;
+    }
+
+    /**
+     * Get verifyAt
+     *
+     * @return \DateTime
+     */
+    public function getVerifyAt()
+    {
+        return $this->verifyAt;
+    }
+
+    /**
+     * Set proIdCode
+     *
+     * @param string $proIdCode
+     *
+     * @return ProjectVoter
+     */
+    public function setProIdCode($proIdCode)
+    {
+        $this->proIdCode = $proIdCode;
+
+        return $this;
+    }
+
+    /**
+     * Get proIdCode
+     *
+     * @return string
+     */
+    public function getProIdCode()
+    {
+        return $this->proIdCode;
+    }
+}

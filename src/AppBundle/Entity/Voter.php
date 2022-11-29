@@ -1,0 +1,1254 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * Voter
+ *
+ * @ORM\Table(name="tbl_voter")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VoterRepository")
+ * @UniqueEntity(fields={"voterName","electId"},message="This name already exist.",errorPath="voterName")
+ */
+class Voter
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="voter_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $voterId;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_name", type="string", length=256)
+     * @Assert\NotBlank()
+     */
+    private $voterName;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_name_pretified", type="string", length=256)
+     */
+    private $voterNamePretified;
+
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_firstname", type="string", length=256)
+     */
+    private $voterFirstname;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="province_code", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $provinceCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $municipalityNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="brgy_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $brgyNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="precinct_no", type="string", length=30)
+     */
+    private $precinctNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=256)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_no", type="string", length=30)
+     */
+    private $voterNo;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="cellphone_no", type="string", length=30)
+     */
+    private $cellphoneNo;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="voter_class", type="integer")
+     */
+    private $voterClass;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_status", type="string", length=15)
+     */
+    private $voterStatus;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="birthdate", type="string", length=30)
+     */
+    private $birthdate;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="voted_2017", type="integer")
+     */
+    private $voted2017;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="has_ast", type="integer")
+     */
+    private $hasAst;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="has_a", type="integer")
+     */
+    private $hasA;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="has_b", type="integer")
+     */
+    private $hasB;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="has_c", type="integer")
+     */
+    private $hasC;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_1", type="integer")
+     */
+    private $is1;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_2", type="integer")
+     */
+    private $is2;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_3", type="integer")
+     */
+    private $is3;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_4", type="integer")
+     */
+    private $is4;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_5", type="integer")
+     */
+    private $is5;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_6", type="integer")
+     */
+    private $is6;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_7", type="integer")
+     */
+    private $is7;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="on_network", type="integer")
+     */
+    private $onNetwork;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=150)
+     */
+    private $category;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="organization", type="string", length=55)
+     */
+    private $organization;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="position", type="string", length=55)
+     */
+    private $position;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="elect_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $electId;
+      
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="clustered_precinct", type="string", length=150)
+     */
+    private $clusteredPrecinct;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voting_center", type="string", length=150)
+     */
+    private $voterCenter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_vin", type="string", length=30)
+     */
+    private $voterVin;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     * @Assert\NotBlank()
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="created_by", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $createdBy;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+
+    private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="updated_by", type="string", length=150)
+     */
+    private $updatedBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=256)
+     */
+    private $remarks;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     */
+    private $status;
+
+    /**
+     * Get voterId
+     *
+     * @return integer
+     */
+    public function getVoterId()
+    {
+        return $this->voterId;
+    }
+
+    /**
+     * Set voterName
+     *
+     * @param string $voterName
+     *
+     * @return Voter
+     */
+    public function setVoterName($voterName)
+    {
+        $this->voterName = $voterName;
+
+        return $this;
+    }
+
+    /**
+     * Get voterName
+     *
+     * @return string
+     */
+    public function getVoterName()
+    {
+        return $this->voterName;
+    }
+
+    /**
+     * Set municipalityNo
+     *
+     * @param string $municipalityNo
+     *
+     * @return Voter
+     */
+    public function setMunicipalityNo($municipalityNo)
+    {
+        $this->municipalityNo = $municipalityNo;
+
+        return $this;
+    }
+
+    /**
+     * Get municipalityNo
+     *
+     * @return string
+     */
+    public function getMunicipalityNo()
+    {
+        return $this->municipalityNo;
+    }
+
+    /**
+     * Set brgyNo
+     *
+     * @param string $brgyNo
+     *
+     * @return Voter
+     */
+    public function setBrgyNo($brgyNo)
+    {
+        $this->brgyNo = $brgyNo;
+
+        return $this;
+    }
+
+    /**
+     * Get brgyNo
+     *
+     * @return string
+     */
+    public function getBrgyNo()
+    {
+        return $this->brgyNo;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return Voter
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set precinctNo
+     *
+     * @param string $precinctNo
+     *
+     * @return Voter
+     */
+    public function setPrecinctNo($precinctNo)
+    {
+        $this->precinctNo = $precinctNo;
+
+        return $this;
+    }
+
+    /**
+     * Get precinctNo
+     *
+     * @return string
+     */
+    public function getPrecinctNo()
+    {
+        return $this->precinctNo;
+    }
+
+    /**
+     * Set voterNo
+     *
+     * @param string $voterNo
+     *
+     * @return Voter
+     */
+    public function setVoterNo($voterNo)
+    {
+        $this->voterNo = $voterNo;
+
+        return $this;
+    }
+
+    /**
+     * Get voterNo
+     *
+     * @return string
+     */
+    public function getVoterNo()
+    {
+        return $this->voterNo;
+    }
+
+    /**
+     * Set cellphoneNo
+     *
+     * @param string $cellphoneNo
+     *
+     * @return Voter
+     */
+    public function setCellphoneNo($cellphoneNo)
+    {
+        $this->cellphoneNo = $cellphoneNo;
+
+        return $this;
+    }
+
+    /**
+     * Get cellphoneNo
+     *
+     * @return string
+     */
+    public function getCellphoneNo()
+    {
+        return $this->cellphoneNo;
+    }
+
+    /**
+     * Set voterClass
+     *
+     * @param integer $voterClass
+     *
+     * @return Voter
+     */
+    public function setVoterClass($voterClass)
+    {
+        $this->voterClass = $voterClass;
+
+        return $this;
+    }
+
+    /**
+     * Get voterClass
+     *
+     * @return integer
+     */
+    public function getVoterClass()
+    {
+        return $this->voterClass;
+    }
+
+    /**
+     * Set voterStatus
+     *
+     * @param string $voterStatus
+     *
+     * @return Voter
+     */
+    public function setVoterStatus($voterStatus)
+    {
+        $this->voterStatus = $voterStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get voterStatus
+     *
+     * @return string
+     */
+    public function getVoterStatus()
+    {
+        return $this->voterStatus;
+    }
+
+    /**
+     * Set voted2017
+     *
+     * @param integer $voted2017
+     *
+     * @return Voter
+     */
+    public function setVoted2017($voted2017)
+    {
+        $this->voted2017 = $voted2017;
+
+        return $this;
+    }
+
+    /**
+     * Get voted2017
+     *
+     * @return integer
+     */
+    public function getVoted2017()
+    {
+        return $this->voted2017;
+    }
+
+    /**
+     * Set hasAst
+     *
+     * @param integer $hasAst
+     *
+     * @return Voter
+     */
+    public function setHasAst($hasAst)
+    {
+        $this->hasAst = $hasAst;
+
+        return $this;
+    }
+
+    /**
+     * Get hasAst
+     *
+     * @return integer
+     */
+    public function getHasAst()
+    {
+        return $this->hasAst;
+    }
+
+    /**
+     * Set hasA
+     *
+     * @param integer $hasA
+     *
+     * @return Voter
+     */
+    public function setHasA($hasA)
+    {
+        $this->hasA = $hasA;
+
+        return $this;
+    }
+
+    /**
+     * Get hasA
+     *
+     * @return integer
+     */
+    public function getHasA()
+    {
+        return $this->hasA;
+    }
+
+    /**
+     * Set hasB
+     *
+     * @param integer $hasB
+     *
+     * @return Voter
+     */
+    public function setHasB($hasB)
+    {
+        $this->hasB = $hasB;
+
+        return $this;
+    }
+
+    /**
+     * Get hasB
+     *
+     * @return integer
+     */
+    public function getHasB()
+    {
+        return $this->hasB;
+    }
+
+    /**
+     * Set hasC
+     *
+     * @param integer $hasC
+     *
+     * @return Voter
+     */
+    public function setHasC($hasC)
+    {
+        $this->hasC = $hasC;
+
+        return $this;
+    }
+
+    /**
+     * Get hasC
+     *
+     * @return integer
+     */
+    public function getHasC()
+    {
+        return $this->hasC;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Voter
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return Voter
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Voter
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param string $updatedBy
+     *
+     * @return Voter
+     */
+    public function setUpdatedBy($updatedBy)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return string
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
+    }
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     *
+     * @return Voter
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Voter
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set is1
+     *
+     * @param integer $is1
+     *
+     * @return Voter
+     */
+    public function setIs1($is1)
+    {
+        $this->is1 = $is1;
+
+        return $this;
+    }
+
+    /**
+     * Get is1
+     *
+     * @return integer
+     */
+    public function getIs1()
+    {
+        return $this->is1;
+    }
+
+    /**
+     * Set is2
+     *
+     * @param integer $is2
+     *
+     * @return Voter
+     */
+    public function setIs2($is2)
+    {
+        $this->is2 = $is2;
+
+        return $this;
+    }
+
+    /**
+     * Get is2
+     *
+     * @return integer
+     */
+    public function getIs2()
+    {
+        return $this->is2;
+    }
+
+    /**
+     * Set is3
+     *
+     * @param integer $is3
+     *
+     * @return Voter
+     */
+    public function setIs3($is3)
+    {
+        $this->is3 = $is3;
+
+        return $this;
+    }
+
+    /**
+     * Get is3
+     *
+     * @return integer
+     */
+    public function getIs3()
+    {
+        return $this->is3;
+    }
+
+    /**
+     * Set is4
+     *
+     * @param integer $is4
+     *
+     * @return Voter
+     */
+    public function setIs4($is4)
+    {
+        $this->is4 = $is4;
+
+        return $this;
+    }
+
+    /**
+     * Get is4
+     *
+     * @return integer
+     */
+    public function getIs4()
+    {
+        return $this->is4;
+    }
+
+    /**
+     * Set is5
+     *
+     * @param integer $is5
+     *
+     * @return Voter
+     */
+    public function setIs5($is5)
+    {
+        $this->is5 = $is5;
+
+        return $this;
+    }
+
+    /**
+     * Get is5
+     *
+     * @return integer
+     */
+    public function getIs5()
+    {
+        return $this->is5;
+    }
+
+    /**
+     * Set is6
+     *
+     * @param integer $is6
+     *
+     * @return Voter
+     */
+    public function setIs6($is6)
+    {
+        $this->is6 = $is6;
+
+        return $this;
+    }
+
+    /**
+     * Get is6
+     *
+     * @return integer
+     */
+    public function getIs6()
+    {
+        return $this->is6;
+    }
+
+    /**
+     * Set is7
+     *
+     * @param integer $is7
+     *
+     * @return Voter
+     */
+    public function setIs7($is7)
+    {
+        $this->is7 = $is7;
+
+        return $this;
+    }
+
+    /**
+     * Get is7
+     *
+     * @return integer
+     */
+    public function getIs7()
+    {
+        return $this->is7;
+    }
+
+    /**
+     * Set provinceCode
+     *
+     * @param string $provinceCode
+     *
+     * @return Voter
+     */
+    public function setProvinceCode($provinceCode)
+    {
+        $this->provinceCode = $provinceCode;
+
+        return $this;
+    }
+
+    /**
+     * Get provinceCode
+     *
+     * @return string
+     */
+    public function getProvinceCode()
+    {
+        return $this->provinceCode;
+    }
+
+    /**
+     * Set onNetwork
+     *
+     * @param integer $onNetwork
+     *
+     * @return Voter
+     */
+    public function setOnNetwork($onNetwork)
+    {
+        $this->onNetwork = $onNetwork;
+
+        return $this;
+    }
+
+    /**
+     * Get onNetwork
+     *
+     * @return integer
+     */
+    public function getOnNetwork()
+    {
+        return $this->onNetwork;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Voter
+     */
+    public function setCategory($category)
+    {
+        $this->category = strtoupper(trim($category));
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set birthdate
+     *
+     * @param string $birthdate
+     *
+     * @return Voter
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+    
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return string
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * Set organization
+     *
+     * @param string $organization
+     *
+     * @return Voter
+     */
+    public function setOrganization($organization)
+    {
+        $this->organization = strtoupper(trim($organization));
+    
+        return $this;
+    }
+
+    /**
+     * Get organization
+     *
+     * @return string
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+    /**
+     * Set position
+     *
+     * @param string $position
+     *
+     * @return Voter
+     */
+    public function setPosition($position)
+    {
+        $this->position = strtoupper(trim($position));
+    
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set electId
+     *
+     * @param integer $electId
+     *
+     * @return Voter
+     */
+    public function setElectId($electId)
+    {
+        $this->electId = $electId;
+    
+        return $this;
+    }
+
+    /**
+     * Get electId
+     *
+     * @return integer
+     */
+    public function getElectId()
+    {
+        return $this->electId;
+    }
+
+    /**
+     * Set clusteredPrecinct
+     *
+     * @param string $clusteredPrecinct
+     *
+     * @return Voter
+     */
+    public function setClusteredPrecinct($clusteredPrecinct)
+    {
+        $this->clusteredPrecinct = $clusteredPrecinct;
+    
+        return $this;
+    }
+
+    /**
+     * Get clusteredPrecinct
+     *
+     * @return string
+     */
+    public function getClusteredPrecinct()
+    {
+        return $this->clusteredPrecinct;
+    }
+
+    /**
+     * Set voterCenter
+     *
+     * @param string $voterCenter
+     *
+     * @return Voter
+     */
+    public function setVoterCenter($voterCenter)
+    {
+        $this->voterCenter = $voterCenter;
+    
+        return $this;
+    }
+
+    /**
+     * Get voterCenter
+     *
+     * @return string
+     */
+    public function getVoterCenter()
+    {
+        return $this->voterCenter;
+    }
+
+    /**
+     * Set voterVin
+     *
+     * @param string $voterVin
+     *
+     * @return Voter
+     */
+    public function setVoterVin($voterVin)
+    {
+        $this->voterVin = $voterVin;
+    
+        return $this;
+    }
+
+    /**
+     * Get voterVin
+     *
+     * @return string
+     */
+    public function getVoterVin()
+    {
+        return $this->voterVin;
+    }
+
+    /**
+     * Set voterNamePretified
+     *
+     * @param string $voterNamePretified
+     *
+     * @return Voter
+     */
+    public function setVoterNamePretified($voterNamePretified)
+    {
+        $this->voterNamePretified = $voterNamePretified;
+
+        return $this;
+    }
+
+    /**
+     * Get voterNamePretified
+     *
+     * @return string
+     */
+    public function getVoterNamePretified()
+    {
+        return $this->voterNamePretified;
+    }
+
+    /**
+     * Set voterFirstname
+     *
+     * @param string $voterFirstname
+     *
+     * @return Voter
+     */
+    public function setVoterFirstname($voterFirstname)
+    {
+        $this->voterFirstname = $voterFirstname;
+
+        return $this;
+    }
+
+    /**
+     * Get voterFirstname
+     *
+     * @return string
+     */
+    public function getVoterFirstname()
+    {
+        return $this->voterFirstname;
+    }
+}

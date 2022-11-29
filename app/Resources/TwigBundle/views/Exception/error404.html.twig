@@ -1,0 +1,17 @@
+{% extends 'error.html.twig' %}
+{% block title %}{{ 'http_error.name'|trans({ '%status_code%': 404 }) }}{% endblock %}
+{% block body %}
+    <body class="page-404-full-page">
+        <div class="row">
+            <div class="col-md-12 page-404">
+                <div class="number font-red"> {{ 'http_error.code'|trans({ '%status_code%': 404 }) }} </div>
+                <div class="details">
+                    <h3>{{ 'http_error_404.description'|trans }}</h3>
+                    <p> {{ 'http_error_404.suggestion'|trans({ '%url%': path('homepage') })|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
+
+

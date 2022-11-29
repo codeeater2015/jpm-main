@@ -1,0 +1,36 @@
+{% extends "main.html.twig" %}
+{% block sidebar_close %}page-sidebar-closed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="component-container">
+                {{ include('tpl/_loading.html.twig')}}
+            </div>
+        </div>
+    </div
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        window.userId = "{{ user.id }}";
+        window.hostIp = "{{ hostIp }}";
+    </script>
+
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/update-manager.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/update-manager/data-import-view-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/update-manager/data-import-datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/update-manager/data-updater-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/update-manager/update-manager.react.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}

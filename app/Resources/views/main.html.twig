@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- START HEAD -->
+    <head>
+        <meta charset="utf-8" />
+        <title>Welcome to JPM-Palawan</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+
+        {% block stylesheets %}
+            {% if app.environment == 'prod' %}
+                <link href="{{ asset('compiled/css/app.min.css', 'compiled') }}" rel="stylesheet" type="text/css" />
+            {% else %}
+
+                <link href="{{ asset('assets/fonts/fonts.css') }}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('font-awesome/css/font-awesome.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('simple-line-icons/simple-line-icons.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('bootstrap/css/bootstrap.min.css', 'plugins') }}" rel="stylesheet" type="text/css"/>
+                <link href="{{ asset('bootstrap-switch/css/bootstrap-switch.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+
+                <link href="{{ asset('icheck/skins/square/_all.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('animate/animate.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('jquery-multi-select/css/multi-select.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('datatables/datatables.min.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('datatables/dataTables.bootstrap.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('bootstrap-datepicker/css/bootstrap-datepicker3.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('bootstrap-daterangepicker/daterangepicker.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('jquery-nestable/jquery.nestable.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('select2/css/select2.min.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('select2/css/select2-bootstrap.min.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('jquery-notific8/jquery.notific8.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('sweetalert2/sweetalert2.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('fancybox/source/jquery.fancybox.css', 'plugins')}}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('jquery-file-upload/css/jquery.fileupload.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+                <link href="{{ asset('jquery-file-upload/css/jquery.fileupload-ui.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('jstree/dist/themes/default/style.min.css', 'plugins') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('bootstrap-multiselect/css/bootstrap-multiselect.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+
+                <link href="{{ asset('css/components-rounded.min.css', 'global') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('css/plugins.css', 'global') }}" type="text/css" rel="stylesheet"/>
+
+                <link href="{{ asset('css/inbox.min.css', 'pages') }}" type="text/css" rel="stylesheet"/>
+
+                <link href="{{ asset('css/layout.min.css', 'layout') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('css/themes/blue.min.css', 'layout') }}" type="text/css" rel="stylesheet"/>
+                <link href="{{ asset('css/custom.css', 'layout') }}" type="text/css" rel="stylesheet"/>
+
+
+
+            {% endif %}
+        {% endblock %}
+        <script type="text/javascript" src="{{ asset('jpeg_camera-master/dist/jpeg_camera_with_dependencies.min.js', 'plugins')}}"></script>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <!-- END HEAD -->
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-sidebar-fixed {% block sidebar_close %}{% endblock %} {% block bg_solid %}{% endblock %}">
+
+        {{ include('tpl/navbar.html.twig') }}
+
+        <div class="clearfix"> </div>
+        <div class="page-container">
+
+            {{ include('tpl/menu_sidebar.html.twig') }}
+
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    {{ knp_menu_render('breadcrumbs', {currentClass: 'active', 'template': 'AppBundle:Menu:breadcrumbs.html.twig'}) }}
+                    {{ include('tpl/_flash_messages.html.twig') }}
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="page-footer-inner"> {{ 'now'|date('Y') }} &copy; JPM Palawan
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+
+        <div class="modal fade modal-scroll" id="notification" role="basic" aria-hidden="true"></div>
+
+        <div class="loading-layer" id="wait-loading-layer"></div>
+        <div class="loading-box" id="wait-loading-box">
+            <div style="margin-top:25px;">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            </div>
+
+            <h5>Please wait...</h5>
+        </div>
+        <div class="loading-layer" id="processing-loading-layer"></div>
+        <div class="loading-box" id="processing-loading-box">
+            <div style="margin-top:25px;">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            </div>
+            <h5>Processing...</h5>
+        </div>
+        <div class="loading-layer" id="loading-layer"></div>
+        <div class="loading-box" id="loading-box">
+            <img src="{{ asset("img/loading/spiral-spinner.svg","global") }}"/>
+            <h5 class="message"></h5>
+        </div>
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script type="text/javascript" src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+            <script type="text/javascript">
+                var appUrlConfig = {};
+                appUrlConfig.reportUrl = "http://localhost";
+                appUrlConfig.baseUrl = "http://localhost";
+            </script>
+
+            {% if app.environment =='prod' %}
+                <script type="text/javascript" src="{{ asset('pdfjs/build/pdf.js', 'plugins')}}"></script>
+
+                <script src="{{ asset('compiled/js/app.min.js', 'compiled') }}"></script>
+                {% if block("isReact") is defined %}
+                <script type="text/javascript" src="{{ asset('react/react.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('react/react-dom.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('react-bootstrap/react-bootstrap.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('compiled/js/loading.react.min.js') }}"></script>
+                {% endif %}
+            {% else %}
+                <script type="text/javascript" src="{{ asset('jquery.min.js','plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('js.cookie.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('jquery-slimscroll/jquery.slimscroll.min.js', 'plugins')}}" ></script>
+                <script type="text/javascript" src="{{ asset('jquery.blockui.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('bootstrap-switch/js/bootstrap-switch.min.js', 'plugins')}}" ></script>
+                <script type="text/javascript" src="{{ asset('jquery-ui/jquery-ui.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('jquery-file-upload/js/jquery.iframe-transport.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('jquery-file-upload/js/jquery.fileupload.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('moment.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('bootstrap-daterangepicker/daterangepicker.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('jquery.number.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('icheck/icheck.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('jquery.quicksearch.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('jquery-inputmask/jquery.inputmask.bundle.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('jquery-multi-select/js/jquery.multi-select.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('jstree/dist/jstree.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('js-pdf/examples/libs/jspdf.debug.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('js-pdf/dist/jspdf.plugin.autotable.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('pdfmake/build/pdfmake.min.js','plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('pdfmake/build/vfs_fonts.js','plugins')}}"></script>
+
+                
+                <script type="text/javascript" src="{{ asset('bootbox/bootbox.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('scripts/datatable.js', 'global')}}"></script>
+                <script type="text/javascript" src="{{ asset('datatables/datatables.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('datatables/dataTables.bootstrap.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('datatables/ellipsis.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('CellEdit/js/dataTables.cellEdit.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('bootstrap-contextmenu/bootstrap-contextmenu.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('bootstrap-datepicker/js/bootstrap-datepicker.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('noty/packaged/jquery.noty.packaged.min.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('jquery-notific8/jquery.notific8.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('jquery-nestable/jquery.nestable.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('select2/js/select2.full.min.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('sweetalert2/sweetalert2.js', 'plugins') }}"></script>
+                <script type="text/javascript" src="{{ asset('fancybox/source/jquery.fancybox.pack.js', 'plugins')}}"></script>
+
+
+                <script type="text/javascript" src="{{ asset('bootstrap-multiselect/js/bootstrap-multiselect.js', 'plugins')}}"></script>
+
+
+                <script type="text/javascript" src="{{ asset('assets/global/scripts/app.js')}}"></script>
+                <script type="text/javascript" src="{{ asset('assets/layout/scripts/layout.js')}}"></script>
+                <script type="text/javascript" src="{{ asset('assets/pages/scripts/pgpis.js')}}"></script>
+
+                {% if block("isReact") is defined %}
+                <script type="text/javascript" src="{{ asset('react/react.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('react/react-dom.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('react-bootstrap/react-bootstrap.js', 'plugins')}}"></script>
+                <script type="text/javascript" src="{{ asset('react/browser.min.js', 'plugins')}}"></script>
+                <script type="text/babel" src="{{ asset('scripts/loading.react.js', 'pages') }}"></script>
+
+                {% endif %}
+
+            {% endif %}
+
+        {% endblock %}
+    </body>
+</html>

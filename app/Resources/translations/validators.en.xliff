@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="change_password.old_password">
+                <source>change_password.old_password</source>
+                <target>This field should be your current password</target>
+            </trans-unit>
+            <trans-unit id="change_password.password_not_match">
+                <source>change_password.password_not_match</source>
+                <target>Password did not match</target>
+            </trans-unit>
+
+            <trans-unit id="module.module_name_used">
+                <source>module.module_name_used</source>
+                <target>The module name '{{ value }}' is already used.</target>
+            </trans-unit>
+            <trans-unit id="module.module_label_used">
+                <source>module.module_label_used</source>
+                <target>The module label '{{ value }}' is already used.</target>
+            </trans-unit>
+            <trans-unit id="module.module_route_used">
+                <source>module.module_route_used</source>
+                <target>The module route '{{ value }}' is already used.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

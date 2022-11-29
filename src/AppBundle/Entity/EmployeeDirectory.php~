@@ -1,0 +1,134 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * EmployeeDirectory
+ *
+ * @ORM\Table(name="tbl_employee_directory")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeDirectoryRepository")
+ */
+class EmployeeDirectory
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_a", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $nameA;
+        
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_b", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $nameB;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_c", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $nameC;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contact_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $contactNo;
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="emp_position", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $empPosition;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $municipality;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="barangay", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $barangay;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="emp_group", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $empGroup;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="office", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $office;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $remarks;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     * @Assert\NotBlank()
+     */
+    private $status;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+

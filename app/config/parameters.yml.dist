@@ -1,0 +1,51 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    container.autowiring.strict_mode: true
+    database_host: localhost
+    database_port: 3306
+    database_name: voter_province_2021
+    database_user: admin
+    database_password: kmmsitdadmin
+    rescue_host: 127.0.0.1
+    rescue_port: 3306
+    rescue_name: rescue_live
+    rescue_user: root
+    rescue_password: 
+    province_host: 127.0.0.1
+    province_port: 3306
+    province_name: voter_province_final
+    province_user: root
+    province_password: 
+    remote_host: 192.168.1.4
+    remote_port: 3306
+    remote_name: voter_province_2021
+    remote_user : admin
+    remote_password : kmmsitdadmin
+    remote_datasource : FIELD_SERVER
+    remote_ip_address : 192.168.1.4:3100
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+    asset_version: 20170519
+    img_url:  http://192.168.1.154:3100/voter/photo/
+    host_ip : 192.168.1.3
+    report_url : http://192.168.1.154:83/voter-report/web/voter/
+    report_org_summary : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/JPM_Organization_Summary&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_org_summary_per_barangay : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/JPM_Organization_Summary_Per_Barangay&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_lgc_list : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/LGC_LIST&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_member_status_form : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/Member_Status_Form&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_member_contact_list : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports%2FJPM/Members_Contact_List&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_household_encoding_summary : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/Household_Encoding_Summary&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_recruitment_encoding_summary : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/Recruitment_Encoding_Summary&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_barangay_total_precinct : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/Barangay_Total_Precinct_List&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_provincial_summary : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/JPM_ORGANIZATION_SUMMARY__PROVINCE_&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_municipal_summary : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/JPM_Organization_Summary__Municipality_&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_non_voter_list : '/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/List_of_Non_Registered_Voter&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no'
+    report_member_status_by_lgc : /jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/Member_Status_Form_By_LGC&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no
+    report_member_status_by_municipality : /jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/Member_Status_Form_By_Municipality&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no
+    report_lgc_pjm_summary : /jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/LGC_PJM_MEMBER_SUMMARY&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no
+    report_lppp1_summary_by_municipality : /jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=/reports/JPM&reportUnit=/reports/JPM/LPP1_TARGET_SUMMARY&standAlone=true&j_username=jasperadmin&j_password=jasperadmin&theme=embed_theme&userLocale=en_US&decorate=no

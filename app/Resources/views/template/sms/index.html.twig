@@ -1,0 +1,33 @@
+{% extends "main.html.twig" %}
+{% block sidebar_close %}page-sidebar-closed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="container">
+                {{ include('tpl/_loading.html.twig')}}
+            </div>
+        </div>
+    </div
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        window.userId = "{{ user.id }}";
+    </script>
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/sms.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/sms/response-modal.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/sms/sms-datatable.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/sms/index.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}

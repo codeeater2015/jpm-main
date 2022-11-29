@@ -1,0 +1,16 @@
+{% set currentItem = knp_menu_get_breadcrumbs_array(knp_menu_get_current_item(item)) %}
+{% if currentItem|last.label != 'root' %}
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        {% for breadcrumb_item in currentItem %}
+            {% if breadcrumb_item.label != "root" %}
+                {% if not loop.last %}
+                    <li><span>{{ breadcrumb_item.item.extras.icon|raw }} {{ breadcrumb_item.label }} </span><i class="fa fa-angle-right"></i></li>
+                {% else %}
+                    <li><span> {{ breadcrumb_item.item.extras.icon|raw }} {{ breadcrumb_item.label }}</span></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

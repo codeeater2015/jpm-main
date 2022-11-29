@@ -1,0 +1,415 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * SpecialOperationPhotos
+ *
+ * @ORM\Table(name="tbl_recruitment_special_photos")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SpecialOperationPhotosRepository")
+ * @UniqueEntity(fields={"filename","recId"},message="This filename already exists.", errorPath="filename")
+ */
+
+class SpecialOperationPhotos
+{
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rec_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $recId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="filename", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $filename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pro_id_code", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $proIdCode;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="pro_voter_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $proVoterId;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="is_not_found", type="integer", scale = 1)
+     */
+    private $isNotFound;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="is_duplicate", type="integer", scale = 1)
+     */
+    private $isDuplicate;
+     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="display_name", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $displayName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="generated_id_no", type="string", length=255)
+     */
+    private $generatedIdNo;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="created_by", type="string", length=150)
+     */
+    private $createdBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=255)
+     */
+    private $remarks;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set recId
+     *
+     * @param integer $recId
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setRecId($recId)
+    {
+        $this->recId = $recId;
+
+        return $this;
+    }
+
+    /**
+     * Get recId
+     *
+     * @return integer
+     */
+    public function getRecId()
+    {
+        return $this->recId;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get filename
+     *
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Set proIdCode
+     *
+     * @param string $proIdCode
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setProIdCode($proIdCode)
+    {
+        $this->proIdCode = $proIdCode;
+
+        return $this;
+    }
+
+    /**
+     * Get proIdCode
+     *
+     * @return string
+     */
+    public function getProIdCode()
+    {
+        return $this->proIdCode;
+    }
+
+    /**
+     * Set proVoterId
+     *
+     * @param integer $proVoterId
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setProVoterId($proVoterId)
+    {
+        $this->proVoterId = $proVoterId;
+
+        return $this;
+    }
+
+    /**
+     * Get proVoterId
+     *
+     * @return integer
+     */
+    public function getProVoterId()
+    {
+        return $this->proVoterId;
+    }
+
+    /**
+     * Set displayName
+     *
+     * @param string $displayName
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setDisplayName($displayName)
+    {
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * Get displayName
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
+    }
+
+    /**
+     * Set generatedIdNo
+     *
+     * @param string $generatedIdNo
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setGeneratedIdNo($generatedIdNo)
+    {
+        $this->generatedIdNo = $generatedIdNo;
+
+        return $this;
+    }
+
+    /**
+     * Get generatedIdNo
+     *
+     * @return string
+     */
+    public function getGeneratedIdNo()
+    {
+        return $this->generatedIdNo;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
+    }
+
+    /**
+     * Set isNotFound
+     *
+     * @param integer $isNotFound
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setIsNotFound($isNotFound)
+    {
+        $this->isNotFound = $isNotFound;
+
+        return $this;
+    }
+
+    /**
+     * Get isNotFound
+     *
+     * @return integer
+     */
+    public function getIsNotFound()
+    {
+        return $this->isNotFound;
+    }
+
+    /**
+     * Set isDuplicate
+     *
+     * @param integer $isDuplicate
+     *
+     * @return SpecialOperationPhotos
+     */
+    public function setIsDuplicate($isDuplicate)
+    {
+        $this->isDuplicate = $isDuplicate;
+
+        return $this;
+    }
+
+    /**
+     * Get isDuplicate
+     *
+     * @return integer
+     */
+    public function getIsDuplicate()
+    {
+        return $this->isDuplicate;
+    }
+}

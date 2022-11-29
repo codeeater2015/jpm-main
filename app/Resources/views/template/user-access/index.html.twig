@@ -1,0 +1,38 @@
+{% extends "main.html.twig" %}
+{% block sidebar_close %}page-sidebar-closed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block body %}
+    <h3 class="page-title"> User Access
+    </h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="user-access-container">
+                {{ include('tpl/_loading.html.twig')}}
+            </div>
+        </div>
+    </div
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        window.userId = "{{ user.id }}";
+        console.log("user id has been received");
+        console.log(window.userId);
+    </script>
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/user-access.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/user-access/user-access-create.modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/user-access/user-access.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/user-access/user-access.modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/user-access/user.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/user-access/user-access.react.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}

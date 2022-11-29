@@ -1,0 +1,161 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <form class="form-horizontal" id="form_create_user" action="{{ path('ajax_save_new_user') }}">
+        <div class="modal-header bg-grey-mint bg-font-grey-mint">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title"><i class="fa fa-user-plus"></i> Create New User</h4>
+        </div>
+        <div class="modal-body " >
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="form_user_alert"></div>
+                    <div class="form-body portlet-form" >
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="form-section bold">Personal Info</h3>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Name <span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="name" placeholder="Enter Name" class="form-control"/>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Gender <span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <div class="mt-radio-list">
+                                            <label class="mt-radio">
+                                                <input type="radio" name="gender" value="Male" checked> Male
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio">
+                                                <input type="radio" name="gender" value="Female"> Female
+                                                <span></span>
+                                            </label>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Email </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="email" placeholder="Enter Email" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Contact No. </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="contact_no" placeholder="Enter Contact No." class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Description </label>
+                                    <div class="col-md-8">
+                                        <textarea  rows="3" name="description" placeholder="Description" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="form-section bold">Account Info</h3>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Project <span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <select name="project" title="Project" class="form-control">
+                                        <option value="">Select Project</option>
+                                        {% for project in projects %}
+                                            <option value="{{ project.proId }}">{{ project.proName }}</option>
+                                        {% endfor %}
+                                        </select>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Group <span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <select name="group" title="Group" class="form-control">
+                                        <option value="">Select Group</option>
+                                        {% for group in groups %}
+                                            <option value="{{ group.id }}">{{ group.groupName }}</option>
+                                        {% endfor %}
+                                        </select>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Strict<span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <div class="mt-radio-list">
+                                            <label class="mt-radio">
+                                                <input type="radio" name="strictAccess" value="1" checked> YES
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio">
+                                                <input type="radio" name="strictAccess" value="0"> NO
+                                                <span></span>
+                                            </label>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Require Approval<span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <div class="mt-radio-list">
+                                            <label class="mt-radio">
+                                                <input type="radio" name="requireApproval" value="1" checked> YES
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio">
+                                                <input type="radio" name="requireApproval" value="0"> NO
+                                                <span></span>
+                                            </label>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Username <span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="username" placeholder="Enter Username" class="form-control"/>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Password <span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <input type="password" name="password" placeholder="Enter Password" class="form-control"/>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Repeat <span class="required">*</span></label>
+                                    <div class="col-md-8">
+                                        <input type="password" name="passwordRepeat" placeholder="Repeat Password" class="form-control"/>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Status </label>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" class="make-switch" name="status" data-on-text="Active" data-off-text="Inactive" data-off-color="danger" data-size="small"/>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" >
+            <div>
+                <button type="submit" class="btn btn-primary btn-fill" id="submit_create"><i class="icon-check"></i> Save</button>
+                <button type="button" class="btn btn-danger btn-fill" id="clear_form"><i class="icon-refresh"></i> Clear</button>
+                <button type="button" class="btn btn-default" id="close" data-dismiss="modal"><i class="icon-close"></i> Cancel</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+

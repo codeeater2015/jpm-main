@@ -1,0 +1,122 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-grid font-grey-gallery"></i>
+                        <span class="caption-subject font-grey-gallery">Module List</span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="{{ path('create_module') }}">
+                            <i class="icon-plus"></i> Create Module
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form class="form-horizontal" action="{{ action }}" method="get" role="form" >
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Filter : </label>
+                                    <div class="col-md-8">
+                                        {{ form_widget(filter_form.searchField,{'attr' : {'class' : 'form-control'}}) }}
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        {{ form_widget(filter_form.searchValue, {'attr' : {'class' : 'form-control'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-info btn-block"><i class="fa fa-search"></i> Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="list-group">
+                        {% for module in modules %}
+                            <div class="list-group-item" id="module_{{ module.Id }}">
+                                <div class="module-img inline top">{{ module.ModuleIcon|raw }}</div>
+                                <div class="inline">
+                                    <h4 class="list-group-item-heading bold">{{ module.ModuleLabel}}</h4>
+                                    <p class="list-group-item-text"><i>{{ (module.ModuleDesc == "") ? "There is no description" : module.ModuleDesc}}</i></p>
+                                 </div>
+                                 <span class="pull-right">
+                                     <a href="{{ path("edit_module", {module_id : module.Id }) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                     <a href="{{ path("module_permission", {module_id : module.Id }) }}" class="btn btn-info btn-xs"><i class="fa fa-shield"></i></a>
+                                     <a href="javascript:;" id="{{ module.Id }}" class="btn btn-danger btn-xs remove"><i class="fa fa-trash"></i></a>
+
+                                 </span>
+                            </div>
+                        {% else %}
+                            <h2><i>There is no module found in this application</i></h2>
+                        {% endfor %}
+
+                    </div>
+
+                    <div style="text-align:center;">
+                        {{ knp_pagination_render(modules) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.list-group-item').on("click",'span a.remove',function(){
+                var id = $(this).attr('id');
+                var url = Routing.generate('ajax_remove_module',{},true);
+                bootbox.confirm("<b>Are you sure you want to remove this?</b>", function(result) {
+                    if (result) {
+                        $.enable_loading('processing');
+
+                        $.post(url, { "id" : id }, function(response){
+                            var data = response;
+                            $.disable_loading('processing');
+
+                            if(data.success === true){
+                                $('#module_'+id).fadeOut( 1000, function() {
+                                    $( this ).remove();
+                                    var list_group = $('.list-group');
+                                    if(list_group.children.length == 0){
+                                        list_group.append('<h2><i>There is no module found in this application</i></h2>');
+                                    }
+                                 });
+                                $.notific8('zindex', 11500);
+                                $.notific8(data.message, {
+                                    heading: 'System Message',
+                                    color: 'teal',
+                                    life: 5000,
+                                    verticalEdge: 'right',
+                                    horizontalEdge: 'bottom',
+                                });
+                            }else{
+                                $.notific8('zindex', 11500);
+                                $.notific8(data.message, {
+                                    heading: 'System Message',
+                                    color: 'ruby',
+                                    life: 5000,
+                                    verticalEdge: 'right',
+                                    horizontalEdge: 'bottom',
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

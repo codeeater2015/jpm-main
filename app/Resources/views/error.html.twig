@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    {% block stylesheets %}
+        <link href="{{ asset('assets/fonts/fonts.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('font-awesome/css/font-awesome.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('simple-line-icons/simple-line-icons.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bootstrap/css/bootstrap.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bootstrap-switch/css/bootstrap-switch.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+
+        <link href="{{ asset('css/components.min.css', 'global') }}" rel="stylesheet"  type="text/css" />
+        <link href="{{ asset('css/plugins.min.css', 'global') }}" rel="stylesheet" type="text/css" />
+
+        <link href="{{ asset('css/error.min.css', 'pages') }}" rel="stylesheet" type="text/css" />
+
+    {% endblock %}
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+</head>
+{% block body %}{% endblock %}
+</html>

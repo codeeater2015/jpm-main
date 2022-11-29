@@ -1,0 +1,323 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * ProjectPrintHeader
+ *
+ * @ORM\Table(name="tbl_project_print_header")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectPrintHeaderRepository")
+ */
+class ProjectPrintHeader
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="print_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $printId;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pro_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $proId;
+
+     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="print_date", type="datetime")
+     * @Assert\NotBlank()
+     */
+    private $printDate;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_members", type="integer")
+     */
+    private $totalMembers;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="print_origin", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $printOrigin;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="origin_id", type="integer")
+     */
+    private $originId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="print_desc", type="string", length=255)
+     */
+    private $printDesc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="entry_by", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $entryBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     */
+    private $status;
+
+     /**
+     * @var array
+     * @Assert\NotBlank(message="This list cannot be empty")
+     * @Assert\Count(
+     *  min = "1",
+     *  max = "155",
+     * )
+     */
+
+    private $profiles;
+
+
+    /**
+     * Get printId
+     *
+     * @return integer
+     */
+    public function getPrintId()
+    {
+        return $this->printId;
+    }
+
+    /**
+     * Set proId
+     *
+     * @param integer $proId
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setProId($proId)
+    {
+        $this->proId = $proId;
+    
+        return $this;
+    }
+
+    /**
+     * Get proId
+     *
+     * @return integer
+     */
+    public function getProId()
+    {
+        return $this->proId;
+    }
+
+    /**
+     * Set printDate
+     *
+     * @param \DateTime $printDate
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setPrintDate($printDate)
+    {
+        $this->printDate = $printDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get printDate
+     *
+     * @return \DateTime
+     */
+    public function getPrintDate()
+    {
+        return $this->printDate;
+    }
+
+    /**
+     * Set totalMembers
+     *
+     * @param integer $totalMembers
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setTotalMembers($totalMembers)
+    {
+        $this->totalMembers = $totalMembers;
+    
+        return $this;
+    }
+
+    /**
+     * Get totalMembers
+     *
+     * @return integer
+     */
+    public function getTotalMembers()
+    {
+        return $this->totalMembers;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+     /**
+     * Set profiles
+     *
+     * @param array $profiles
+     *
+     * @return PswProfilePrintingHdr
+     */
+    public function setProfiles($profiles)
+    {
+        $this->profiles = $profiles;
+    
+        return $this;
+    }
+
+    /**
+     * Get profiles
+     *
+     * @return array
+     */
+    public function getProfiles()
+    {
+        return $this->profiles;
+    }
+
+    /**
+     * Set entryBy
+     *
+     * @param string $entryBy
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setEntryBy($entryBy)
+    {
+        $this->entryBy = $entryBy;
+    
+        return $this;
+    }
+
+    /**
+     * Get entryBy
+     *
+     * @return string
+     */
+    public function getEntryBy()
+    {
+        return $this->entryBy;
+    }
+
+    /**
+     * Set printOrigin
+     *
+     * @param string $printOrigin
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setPrintOrigin($printOrigin)
+    {
+        $this->printOrigin = $printOrigin;
+
+        return $this;
+    }
+
+    /**
+     * Get printOrigin
+     *
+     * @return string
+     */
+    public function getPrintOrigin()
+    {
+        return $this->printOrigin;
+    }
+
+    /**
+     * Set originId
+     *
+     * @param integer $originId
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setOriginId($originId)
+    {
+        $this->originId = $originId;
+
+        return $this;
+    }
+
+    /**
+     * Get originId
+     *
+     * @return integer
+     */
+    public function getOriginId()
+    {
+        return $this->originId;
+    }
+
+    /**
+     * Set printDesc
+     *
+     * @param string $printDesc
+     *
+     * @return ProjectPrintHeader
+     */
+    public function setPrintDesc($printDesc)
+    {
+        $this->printDesc = $printDesc;
+
+        return $this;
+    }
+
+    /**
+     * Get printDesc
+     *
+     * @return string
+     */
+    public function getPrintDesc()
+    {
+        return $this->printDesc;
+    }
+}

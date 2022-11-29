@@ -1,0 +1,242 @@
+/* here you can put your own css to customize and override the theme */
+/*.dataTables_filter input {*/
+    /*width: 200px !important;*/
+/*}*/
+.datatable_filter{
+    padding: 10px 5px !important;
+}
+
+.row-no-padding [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+/*body.modal-open { overflow: hidden!important; }*/
+
+.border-radius-input-range{
+    border-radius : 3px 3px 3px 3px !important;
+}
+
+.form-group-no-bottom-margin { margin-bottom:0px; }
+
+table.floatThead-table {
+    border-top: none;
+    border-bottom: none;
+    background-color: #FFF;
+}
+
+.fluid-size{
+    width: 100% !important;
+}
+
+td.details-control {
+    background: url('../../global/img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../../global/img/details_close.png') no-repeat center center;
+}
+
+.modal-custom-95.modal-dialog {
+    width: 95%;
+}
+.modal-custom-85.modal-dialog {
+    width: 85%;
+}
+
+.modal-custom-55.modal-dialog {
+    width: 55%;
+}
+
+.modal-custom-45.modal-dialog {
+    width: 45%;
+}
+
+.modal-custom-40.modal-dialog {
+    width: 40%;
+}
+
+.custom-condensed {
+    padding:5px;
+}
+
+.custom-condensed>tbody>tr>td,
+.custom-condensed>tbody>tr>th,
+.custom-condensed>tfoot>tr>td,
+.custom-condensed>tfoot>tr>th,
+.custom-condensed>thead>tr>td,
+.custom-condensed>thead>tr>th {
+    padding: 5px;
+}
+.inline {
+    display: inline-block !important;
+}
+
+.font20px{
+    font-size: 20px !important;
+}
+.top {
+    vertical-align: top !important;
+}
+
+.align-center {
+    text-align: center !important;
+}
+
+.align-right {
+    text-align: right !important;
+}
+
+.align-left {
+    text-align: right !important;
+}
+
+.valign-middle {
+    vertical-align : middle !important;
+}
+.module-img {
+    min-width: 55px;
+    margin-top:10px;
+}
+
+.module-img img {
+    vertical-align: top;
+    max-width: 32px;
+    margin: 0 0 0 5px;
+}
+
+.module-img i {
+    font-size: 32px;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+
+.loading-layer {
+    display:none;
+    background-color: #000;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+    opacity: .4;
+    z-index: 15000 !important;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.loading-box {
+    display:none;
+    position: fixed;
+    padding: 10px 25px;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    margin-top: -120px;
+    margin-left: -60px;
+    background-color: #000;
+    z-index: 15001 !important;
+    opacity: .9;
+    width: auto;
+    cursor: default;
+    box-shadow: 0px 0px 50px rgb(000,000,000);
+    -moz-box-shadow:0 0 3px 50px #000;
+    -webkit-box-shadow: 0 0px 50px #000;
+    border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    -khtml-border-radius: 10px !important;
+    -webkit-border-top: 10px !important;
+}
+
+
+.pds nav-tabs li.active{
+    border-left:5px solid #32C5D2;
+    font-weight: bold;
+}
+
+.pds nav-tabs li{
+    background-color:#DCDEE0;
+
+}
+.pds nav-tabs li a {
+    color:#333333;
+}
+
+
+.font-md{
+    font-size:16px;
+}
+.font-lg{
+    font-size:24px;
+}
+.overflow-auto{
+    overflow:auto;
+}
+@media (max-width: 767px) {
+
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu {
+        margin-right: -110px; }
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:before {
+        margin-right: 110px; }
+}
+
+#voter_table tbody tr td, #voter_history_table tbody tr td , 
+#project_event_detail_datatable tr td ,
+#sms_received_datatable tbody tr td,
+#project_recruitment_table tbody tr td{
+    font-size:12px !important;
+}
+
+#voter_network_table tbody tr td,#voter_network_table thead tr th{
+    font-size:12px;
+}
+
+#voter_summary_table thead tr th,#voter_summary_table thead tr td{
+    font-size:13px;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: white;
+ }
+ 
+.table.table-bordered > thead > tr > th{
+    border:1px solid #D4D4D4;
+}
+.table.table-bordered > tbody > tr > td{
+    border:1px solid #D4D4D4;
+}
+
+.voter-view-header div{
+    font-size: 13px;
+}
+
+.select2-container .custom-option .select2-results__option[aria-disabled] {
+    background-color: #FF697A;
+    color: white;
+}
+
+.jstree-default .jstree-clicked {
+    background: none;
+    border: 0;
+    background-color: #5E738B;
+    box-shadow: none;
+}
+
+.pointer {cursor: pointer;}
+
+#ms-barangays{
+    width: 100% !important
+}
+
+.page-content {
+    background-color: #eef1f5;
+}

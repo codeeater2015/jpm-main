@@ -1,0 +1,45 @@
+{% extends "main.html.twig" %}
+{% block sidebar_close %}page-sidebar-closed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="page-container">
+                {{ include('tpl/_loading.html.twig')}}
+            </div>
+        </div>
+    </div
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        window.userId = "{{ user.id }}";
+    </script>
+
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/financial-assistance.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.posting-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.monthly-summary-report.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.municipality-summary-report.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.daily-summary-report.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.closing-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.release-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.create-new-profile-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.edit-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.create-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.released-list-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.daily-summary-detail.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.daily-summary.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/financial-assistance/fa.react.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}

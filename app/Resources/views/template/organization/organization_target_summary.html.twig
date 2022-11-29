@@ -1,0 +1,40 @@
+{% extends "main.html.twig" %}
+{% block sidebar_close %}page-sidebar-closed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="container">
+                {{ include('tpl/_loading.html.twig')}}
+            </div>
+        </div>
+    </div
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript">
+        window.userId = "{{ user.id }}";
+        window.hostIp = "{{ hostIp }}";
+        window.imgUrl = "{{ imgUrl }}";
+        window.reportUrl = "{{ reportUrl }}";
+    </script>
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/organization-target-summary.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/organization-summary/organization-summary-photo-datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/organization-summary/organization-summary-detail-datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/organization-summary/organization-summary-item-detail.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/organization-target-summary/organization-barangay-target-summary.table.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/organization-target-summary/organization-municipality-target-summary.table.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/organization-target-summary/organization-province-target-summary.table.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/organization-target-summary/organization-target-summary.react.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}

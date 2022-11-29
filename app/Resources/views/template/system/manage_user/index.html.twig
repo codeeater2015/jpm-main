@@ -1,0 +1,103 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light portlet-fit portlet-datatable bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-grey-gallery bold">List All </span>
+                        <span class="caption-subject font-grey-gallery">Users </span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" id="create">
+                            <i class="fa fa-plus"></i> Create new user
+                        </a>
+                        <a href="javascript:;" class="btn btn-danger btn-sm" id="batch_delete">
+                            <i class="fa fa-trash"></i> Delete selected user
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-container">
+                        <div class="table-actions-wrapper">
+                            <span> </span>
+                        </div>
+                        <table id="user_table" class="table table-bordered table-striped table-checkable" width="100%">
+                            <thead>
+                            <tr>
+                                <th width="2%">
+                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                        <input type="checkbox" class="group-checkable"  />
+                                        <span></span>
+                                    </label>
+                                </th>
+                                <th >Name</th>
+                                <th width="15%">Username</th>
+                                <th width="12%" class="text-center">Gender</th>
+                                <th width="18%" class="text-center">Group</th>
+                                <th width="12%" class="text-center">Status</th>
+                                <th class="text-center" width="18%">Action</th>
+                            </tr>
+                            <tr role="row" class="filter">
+                                <td> </td>
+                                <td>
+                                    <input type="text" class="form-control form-filter input-sm" name="name"/> </td>
+                                <td>
+                                    <input type="text" class="form-control form-filter input-sm" name="username"/> </td>
+                                <td>
+                                    <select name="gender" class="form-control form-filter input-sm">
+                                        <option value="">Select...</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="group" class="form-control form-filter input-sm">
+                                        <option value="">Select...</option>
+                                        {% for group in groups %}
+                                        <option value="{{ group.id }}">{{ group.groupName }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="status" class="form-control form-filter input-sm">
+                                        <option value="">Select...</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm green btn-block btn-outline filter-submit margin-bottom">
+                                        <i class="fa fa-search"></i> Search</button>
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-scroll" id="modal_view_user" role="basic" aria-hidden="true" data-backdrop="static" data-keyboard="false" ></div>
+    <div class="modal fade modal-scroll" id="modal_create_new_user" role="basic" aria-hidden="true" data-backdrop="static" data-keyboard="false" ></div>
+    <div class="modal fade modal-scroll" id="modal_edit_user" role="basic" aria-hidden="true" data-backdrop="static" data-keyboard="false" ></div>
+    <div class="modal fade modal-scroll" id="modal_change_user_password" role="basic" aria-hidden="true" data-backdrop="static" data-keyboard="false" ></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if app.environment == "prod" %}
+        <script src="{{ asset('compiled/js/user.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script src="{{ asset('scripts/system/user/user-create-new-user.js', 'pages') }}"></script>
+        <script src="{{ asset('scripts/system/user/user-edit-user.js', 'pages') }}"></script>
+        <script src="{{ asset('scripts/system/user/user-change-user-password.js', 'pages') }}"></script>
+        <script src="{{ asset('scripts/system/user/user.js', 'pages') }}"></script>
+    {% endif %}
+
+{% endblock %}

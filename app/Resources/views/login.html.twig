@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Welcome to JPM-Palawan</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+
+        {% block stylesheets %}
+        {% if app.environment == "prod" %}
+            <link href="{{ asset('compiled/css/login.min.css', 'compiled') }}" rel="stylesheet" type="text/css" />
+        {% else %}
+            <link href="{{ asset('assets/fonts/fonts.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('font-awesome/css/font-awesome.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('simple-line-icons/simple-line-icons.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('bootstrap/css/bootstrap.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('bootstrap-switch/css/bootstrap-switch.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+
+            <link href="{{ asset('css/components.min.css', 'global') }}" rel="stylesheet"  type="text/css" />
+            <link href="{{ asset('css/plugins.min.css', 'global') }}" rel="stylesheet" type="text/css" />
+
+            <link href="{{ asset('css/login.css', 'pages') }}" rel="stylesheet" type="text/css" />
+        {% endif %}
+
+
+        {% endblock %}
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" /> </head>
+
+
+    <body class="login">
+
+        {% block body %}
+        {% endblock %}
+
+        {% block javascripts %}
+        <script type="text/javascript">
+            let appUrlConfig = {};
+
+            {% if app.environment =='prod' %}
+            appUrlConfig.baseUrl = "{{ app.request.getSchemeAndHttpHost() ~ app.request.baseUrl }}";
+            {% else %}
+            appUrlConfig.baseUrl = "{{ app.request.getSchemeAndHttpHost() ~ app.request.baseUrl }}/..";
+            {% endif %}
+
+        </script>
+            {% if app.environment == "prod" %}
+                <script src="{{ asset('compiled/js/login.min.js', 'compiled') }}" type="text/javascript"></script>
+            {% else %}
+                <script src="{{ asset('jquery.min.js', 'plugins') }}" type="text/javascript"></script>
+                <script src="{{ asset('bootstrap/js/bootstrap.min.js', 'plugins') }}" type="text/javascript"></script>
+
+                <script src="{{ asset('scripts/app.js', 'global') }}" type="text/javascript"></script>
+            {% endif %}
+        {% endblock %}
+    </body>
+
+</html>

@@ -1,0 +1,34 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <h3 class="page-title bold"> Shortcut Menu
+    </h3>
+    <div class="portlet light bordered">
+        <div class="portlet-body">
+            <div class="tiles">
+
+                {% if menus|length == 0 %}
+                    <h1>No menu available</h1>
+                {% else %}
+                    <div class="row">
+                        {%  for menu in menus %}
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="padding-left: 5px;padding-right: 15px;">
+                                <a href="{{ menu.menuLink }}">
+                                    <div class="tile bg-blue-chambray bg-font-blue-dark" style="width: 100% !important;">
+                                        <div class="tile-body">
+                                            {{ menu.menuIcon|raw }}
+                                        </div>
+                                        <div class="tile-object">
+                                            <div class="name"> {{ menu.menuLabel }}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,81 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * VoterAssistanceSummary
+ *
+ * @ORM\Table(name="tbl_assistance_summary")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VoterAssistanceSummaryRepository")
+ */
+class VoterAssistanceSummary
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="sum_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $sumId;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="province_code", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $provinceCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality_no", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $municipalityNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="brgy_no", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $brgyNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=50)
+     * @Assert\NotBlank()
+     */
+    private $category;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total_amount", type="float", scale=2)
+     */
+    private $totalAmount;
+    
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     * @Assert\NotBlank()
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="created_by", type="string")
+     * @Assert\NotBlank()
+     */
+    private $createdBy;
+}
+

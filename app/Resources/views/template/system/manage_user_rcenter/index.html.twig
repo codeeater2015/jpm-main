@@ -1,0 +1,63 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-grid font-grey-gallery"></i>
+                        <span class="caption-subject font-grey-gallery">Manage User Responsibility Center</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-10 margin-bottom-5">
+                            <select title="Username" name="user" id="user" class="form-control">
+                                <option value=""></option>
+                                {% for user in users %}
+                                <option value="{{ user.id }}">{{ user.username|upper }} | {{ user.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-block btn-primary" id="save_changes">Save Changes</button>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-10 margin-bottom-5">
+                                    <select title="Responsibility Center" multiple="multiple" id="rcenter" name="rcenter" >
+                                        {% for rcenter in rcenters %}
+                                        <option value="{{ rcenter.rc_code }}">{{ rcenter.rc_code }} - {{ rcenter.rc_project }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" id="select_all" class="btn btn-primary btn-block margin-bottom">Select All</button>
+                                    <button type="button" id="deselect_all" class="btn btn-danger btn-block">Deselect All</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if app.environment == "prod" %}
+        <script src="{{ asset('compiled/js/user_rcenter.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/system/user_rcenter/user_rcenter.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="http_error.name">
+                <source>http_error.name</source>
+                <target>Error %status_code%</target>
+            </trans-unit>
+            <trans-unit id="http_error.code">
+                <source>http_error.code</source>
+                <target>%status_code%</target>
+            </trans-unit>
+            <trans-unit id="http_error.description">
+                <source>http_error.description</source>
+                <target>There was an unknown error (HTTP %status_code%) that prevented to complete your request.</target>
+            </trans-unit>
+            <trans-unit id="http_error.suggestion">
+                <source>http_error.suggestion</source>
+                <target><![CDATA[Try loading this page again in some minutes or <a href="%url%">go back to the homepage</a>.]]></target>
+            </trans-unit>
+            <trans-unit id="http_error_403.description">
+                <source>http_error_403.description</source>
+                <target>You don't have permission to access to this resource.</target>
+            </trans-unit>
+            <trans-unit id="http_error_403.suggestion">
+                <source>http_error_403.suggestion</source>
+                <target>Ask your manager or system administrator to grant you access to this resource.</target>
+            </trans-unit>
+            <trans-unit id="http_error_404.description">
+                <source>http_error_404.description</source>
+                <target>We couldn't find the page you requested.</target>
+            </trans-unit>
+            <trans-unit id="http_error_404.suggestion">
+                <source>http_error_404.suggestion</source>
+                <target><![CDATA[Check out any misspelling in the URL or <a href="%url%">go back to the homepage</a>.]]></target>
+            </trans-unit>
+            <trans-unit id="http_error_500.description">
+                <source>http_error_500.description</source>
+                <target>There was an internal server error.</target>
+            </trans-unit>
+            <trans-unit id="http_error_500.suggestion">
+                <source>http_error_500.suggestion</source>
+                <target><![CDATA[Try loading this page again in some minutes or <a href="%url%">go back to the homepage</a>.]]></target>
+            </trans-unit>
+
+            <trans-unit id="permission.denied">
+                <source>permission.denied</source>
+                <target>Sorry you have no permission to perform this action.</target>
+            </trans-unit>
+
+            <trans-unit id="change_password.updated_successfully">
+                <source>change_password.updated_successfully</source>
+                <target>You have successfully change your password.</target>
+            </trans-unit>
+
+            <trans-unit id="module.created_successfully">
+                <source>module.created_successfully</source>
+                <target>Module successfully created.</target>
+            </trans-unit>
+            <trans-unit id="module.updated_successfully">
+                <source>module.updated_successfully</source>
+                <target>Module successfully updated.</target>
+            </trans-unit>
+            <trans-unit id="Previous">
+                <source>Previous</source>
+                <target>Previous</target>
+            </trans-unit>
+            <trans-unit id="Next">
+                <source>Next</source>
+                <target>Next</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

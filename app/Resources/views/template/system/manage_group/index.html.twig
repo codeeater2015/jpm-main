@@ -1,0 +1,30 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="group_section">
+                {{include('tpl/_system_loading.html.twig')}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/group.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-loading.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-alert.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-create-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-edit-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-permission-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-section.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/system/group/group-index.react.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * ReceivedSms
+ *
+ * @ORM\Table(name="received_sms")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ReceivedSmsRepository")
+ */
+class ReceivedSms
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MessageTo", type="string", length=80)
+     * @Assert\NotBlank()
+     */
+
+    private $messageTo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MessageFrom", type="string", length=80)
+     */
+
+    private $messageFrom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MessageText", type="string")
+     * @Assert\NotBlank()
+     */
+
+    private $messageText;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="SendTime", type="datetime")
+     */
+
+    private $sendTime;
+}
+

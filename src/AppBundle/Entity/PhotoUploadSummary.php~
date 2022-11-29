@@ -1,0 +1,141 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * PhotoUploadSummary
+ *
+ * @ORM\Table(name="tbl_photo_upload_summary")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PhotoUploadSummaryRepository")
+ * @UniqueEntity(fields={"municipalityNo","brgyNo", "sumDate"}, message="Conflicting summary.",errorPath="brgyNo")
+ */
+class PhotoUploadSummary
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality_no", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $municipalityNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality_name", type="string", length=80)
+     * @Assert\NotBlank()
+     */
+    private $municipalityName;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="brgy_no", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $brgyNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="brgy_name", type="string", length=80)
+     * @Assert\NotBlank()
+     */
+    private $brgyName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sum_date", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $sumDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_group", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $voterGroup;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="total_uploads", type="integer")
+     */
+    private $totalUploads;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_linked", type="integer")
+     */
+    private $totalLinked;
+
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_unlinked", type="integer")
+     */
+    private $totalUnlinked;
+
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_has_photo", type="integer")
+     */
+    private $totalHasPhoto;
+
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_has_id", type="integer")
+     */
+    private $totalHasId;
+
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_for_printing", type="integer")
+     */
+    private $totalForPrinting;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_precincts", type="integer")
+     */
+    private $totalPrecincts;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=150)
+     */
+    private $remarks;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=30)
+     */
+    private $status;
+}

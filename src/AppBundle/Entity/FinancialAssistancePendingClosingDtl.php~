@@ -1,0 +1,283 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
+/**
+ * FinancialAssistancePendingClosingDtl
+ *
+ * @ORM\Table(name="tbl_fa_pending_closing_dtl")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FinancialAssistancePendingClosingDtlRepository")
+ */
+class FinancialAssistancePendingClosingDtl
+{
+   /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="hdr_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $hdrId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="trn_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $trnId;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="trn_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $trnNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="applicant_name", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $applicantName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="applicant_pro_voter_id", type="integer")
+     */
+    private $applicantProVoterId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beneficiary_name", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $beneficiaryName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="beneficiary_pro_voter_id", type="integer")
+     */
+    private $beneficiaryProVoterId;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="is_released", type="integer")
+     */
+    private $isReleased;
+    
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="is_closed", type="integer")
+     */
+    private $isClosed;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="closed_date", type="string", length=15)
+     */
+    private $closedDate;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="contact_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $contactNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hospital_name", type="string", length=150)
+     */
+    private $hospitalName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jpm_id_no", type="string", length=100)
+     */
+    private $jpmIdNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $municipalityNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="barangay_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $barangayNo;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="type_of_asst", type="string")
+     * @Assert\NotBlank()
+     */
+    private $typeOfAsst;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="endorsed_by", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $endorsedBy;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="trn_date", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $trnDate;
+
+     /**
+     * @var float
+     *
+     * @ORM\Column(name="projected_amt", type="float", scale=2)
+     */
+    private $projectedAmt;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="granted_amt", type="float", scale=2)
+     */
+    private $grantedAmt;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="release_date", type="string", length=15)
+     */
+    private $releaseDate;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="releasing_office", type="string", length = 150)
+     */
+    private $releasingOffice;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="received_by", type="string", length=150)
+     */
+    private $receivedBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="personnel", type="string", length = 150)
+     */
+    private $personnel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="req_type", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $reqType;
+
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_dswd_medical", type="integer", scale = 1)
+     */
+    private $isDswdMedical;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_dswd_opd", type="integer", scale = 1)
+     */
+    private $isDswdOpd;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_doh_maip_medical", type="integer", scale = 1)
+     */
+    private $isDohMaipMedical;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_doh_maip_opd", type="integer", scale = 1)
+     */
+    private $isDohMaipOpd;
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="posted_date", type="string", length=15)
+     */
+    private $postedDate;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="posted_by", type="string", length = 150)
+     */
+    private $postedBy;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="created_by", type="string", length=150)
+     */
+    private $createdBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=255)
+     */
+    private $remarks;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     */
+    private $status;
+}

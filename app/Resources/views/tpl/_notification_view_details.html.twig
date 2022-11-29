@@ -1,0 +1,173 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h3 style="color:#000;" class="modal-title"> Suspension Details</h3>
+
+        </div>
+        <div class="modal-body" >
+            <form class="form-horizontal" role="form">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-4">Suspended Date :</label>
+                                        <div class="col-md-6">
+                                            <p class="form-control-static bold"> {{ suspension.suspension_date|date("d F Y h:i:s A") }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-4">Suspended By :</label>
+                                        <div class="col-md-8">
+                                            <p class="form-control-static bold"> {{ suspension.suspension_by }} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-4">Remarks :</label>
+                                        <div class="col-md-8">
+                                            <p class="form-control-static bold"> {{ suspension.suspension_reason }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <h3 class="form-section">OBR Info</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">OBR No :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.obr_desc }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">OBR Date :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.obr_date }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">RCenter :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.rc_code }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">Type :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.obr_refnum_type }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">OBR Name:</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.obr_name }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">Particulars:</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.obr_remarks }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">OBR Amount:</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.total_amount|number_format(2) }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <h3 class="form-section">Disbursement Voucher Info</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">DV No :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.dv_desc }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">DV Date :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.dv_date }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">DV Name:</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.dv_name }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">Particulars:</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.dv_remarks }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-no-bottom-margin">
+                                        <label class="control-label col-md-5">DV Amount:</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ suspension.dv_amount|number_format(2) }}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer" >
+            <div >
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>PGPIS | {% block page_title %}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <link href="{{ asset('font-awesome/css/font-awesome.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css', 'plugins') }}" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        body, html
+        {
+            margin: 0; padding: 0; height: 100%; overflow: hidden;
+        }
+
+        #content
+        {
+            position:absolute; left: 0; right: 0; bottom: 0; top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <a href="{{ app.request.headers.get('referer') }}" style="margin:5px;" class="btn btn-primary btn-xs"><i class="fa fa-arrow-left"></i> Back</a>
+        <iframe width="100%" height="100%" frameborder="0" src="{% block iframe_url %}{% endblock %}" ></iframe>
+    </div>
+</body>
+</html>

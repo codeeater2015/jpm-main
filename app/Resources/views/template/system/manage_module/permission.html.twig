@@ -1,0 +1,244 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <div class="caption">
+                        Module Permission </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-toolbar">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="btn-group">
+                                    <button type="button" id="table_permission_add" class="btn sbold green"> <i class="fa fa-plus"></i> Add New
+                                    </button>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="{{ path('manage_module') }}" class="btn sbold red"> <i class="fa fa-arrow-left"></i> Back
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-condensed" id="table_permission">
+                        <thead>
+                        <tr>
+                            <th style="width:10px;text-align:center;"> Id </th>
+                            <th> Permission Name </th>
+                            <th> Permission Description </th>
+                            <th style="width:50px;text-align:center;"> Edit</th>
+                            <th style="width:50px;text-align:center;"> Delete</th>
+                        </tr>
+                        </thead>
+                            {% for permission in permissions %}
+                            <tr>
+                                <td> {{ permission.Id }} </td>
+                                <td> {{ permission.permissionName }} </td>
+                                <td> {{ permission.permissionDesc }} </td>
+                                <td>
+                                    <a class="edit" href="javascript:;"> Edit </a>
+                                </td>
+                                <td>
+                                    <a class="delete" href="javascript:;"> Delete </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        function restoreRow(oTable, nRow) {
+            var aData = oTable.fnGetData(nRow);
+            var jqTds = $('>td', nRow);
+            for (var i = 0, iLen = jqTds.length + 1; i < iLen; i++) {
+
+                oTable.fnUpdate(aData[i], nRow, i, false);
+            }
+
+            oTable.fnDraw();
+        }
+
+        function editRow(oTable, nRow) {
+            var aData = oTable.fnGetData(nRow);
+            var jqTds = $('>td', nRow);
+            jqTds[0].innerHTML = '<input type="text" class="form-control" value="' + aData[1] + '">';
+            jqTds[1].innerHTML = '<input type="text" class="form-control" value="' + aData[2] + '">';
+            jqTds[2].innerHTML = '<a href="javascript:;" class="btn btn-primary edit">Save</a>';
+            jqTds[3].innerHTML = '<a href="javascript:;" class="btn btn-danger cancel">Cancel</a>';
+        }
+
+        function saveRow(oTable, nRow, data) {
+            console.log(data);
+            oTable.fnUpdate(data['id'], nRow, 0, false);
+            oTable.fnUpdate(data['name'], nRow, 1, false);
+            oTable.fnUpdate(data['description'], nRow, 2, false);
+            oTable.fnUpdate('<a href="javascript:;" class="edit">Edit</a>', nRow, 3, false);
+            oTable.fnUpdate('<a href="javascript:;" class="delete">Delete</a>', nRow, 4, false);
+            oTable.fnDraw();
+        }
+
+
+        var table = $('#table_permission');
+        var oTable = table.dataTable({
+            "paging": false,
+            "columnDefs": [{  // set default column settings
+                'orderable': false,
+                'targets': [0,3,4]
+            },{
+                'className': "align-center",
+                "targets": [ 0,3,4]
+            },{
+                'targets': [0],
+                'visible' : false,
+                'searchable' : false
+            }],
+            "order": [ ]
+        });
+
+        var nEditing = null;
+        var nNew = false;
+
+        $('#table_permission_add').click(function (e) {
+            e.preventDefault();
+
+            if (nNew && nEditing) {
+                if (confirm("Previose row not saved. Do you want to save it ?")) {
+                    saveRow(oTable, nEditing,""); // save
+                    $(nEditing).find("td:first").html("Untitled");
+                    nEditing = null;
+                    nNew = false;
+
+                } else {
+                    oTable.fnDeleteRow(nEditing); // cancel
+                    nEditing = null;
+                    nNew = false;
+
+                    return;
+                }
+            }
+
+            var aiNew = oTable.fnAddData(['', '', '', '', '']);
+            var nRow = oTable.fnGetNodes(aiNew[0]);
+            editRow(oTable, nRow);
+            nEditing = nRow;
+            nNew = true;
+        });
+
+        table.on('click', '.delete', function (e) {
+            e.preventDefault();
+            var nRow = $(this).parents('tr')[0];
+            var aData = oTable.fnGetData(nRow);
+            var id = aData[0];
+
+            var url = Routing.generate("ajax_remove_module_permission",{},true);
+            bootbox.dialog({
+                title: "<strong><i class='fa fa-warning'></i> Warning</strong>",
+                message: "<strong>Are you sure you want to remove this?</strong>",
+                buttons: {
+                    'cancel': {
+                        label: 'Cancel',
+                        className: 'btn-default '
+                    },
+                    'confirm': {
+                        label: 'Yes, Delete',
+                        className: 'btn-danger',
+                        callback: function(){
+                            oTable.fnDeleteRow(nRow);
+                            $.ajax({
+                                url : url + '?id=' + id,
+                                type: 'DELETE'
+                            }).done(function(res){
+                                console.log(res)
+                            }).fail(function(res){
+                                console.log(res)
+                            });
+                        }
+                    }
+                }
+            });
+
+        });
+
+        table.on('click', '.cancel', function (e) {
+            e.preventDefault();
+            if (nNew) {
+                oTable.fnDeleteRow(nEditing);
+                nEditing = null;
+                nNew = false;
+            } else {
+                restoreRow(oTable, nEditing);
+                nEditing = null;
+            }
+        });
+
+        table.on('click', '.edit', function (e) {
+            e.preventDefault();
+            nNew = false;
+
+            /* Get the row as a parent of the link that was clicked on */
+            var nRow = $(this).parents('tr')[0];
+
+            if (nEditing !== null && nEditing != nRow) {
+                /* Currently editing - but not this row - restore the old before continuing to edit mode */
+                restoreRow(oTable, nEditing);
+                editRow(oTable, nRow);
+                nEditing = nRow;
+            } else if (nEditing == nRow && this.innerHTML == "Save") {
+                /* Editing this row and want to save it */
+                var jqInputs = $('input', nRow);
+                var aData = oTable.fnGetData(nRow);
+
+                var type = "PATCH";
+                var url = Routing.generate("ajax_update_module_permission",{},true);
+                if(aData[0] == ""){
+                    type = "POST";
+                    url = Routing.generate("ajax_add_module_permission",{},true);
+                }
+
+                saveRow(oTable,nRow,{id : aData[0],name : jqInputs[0].value,description : jqInputs[1].value});
+
+                $.ajax({
+                    type : type,
+                    url : url,
+                    data : ({
+                        module_id : "{{ module_id }}",
+                        id : aData[0],
+                        name : jqInputs[0].value,
+                        description : jqInputs[1].value
+                    })
+                })
+                .done(function(res){
+                    saveRow(oTable,nEditing,res.data);
+                    nEditing = null;
+                })
+                .fail(function(res){
+                    console.log(res)
+                });
+
+            } else {
+                /* No edit in progress - let's start one */
+                editRow(oTable, nRow);
+                nEditing = nRow;
+            }
+        });
+    </script>
+
+{% endblock %}
+
+

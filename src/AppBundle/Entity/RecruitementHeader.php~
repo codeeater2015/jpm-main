@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * RecruitementHeader
+ *
+ * @ORM\Table(name="tbl_recruitement_header")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RecruitementHeaderRepository")
+ */
+class RecruitementHeader
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rec_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $recId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="pro_voter_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $proVoterId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voter_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $voterId;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="pro_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $proId;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="total_with_cellphone", type="integer")
+     */
+    private $totalWithCellphone;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_members", type="integer")
+     */
+    private $totalMembers;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=255)
+     */
+    private $remarks;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     */
+
+    private $status;
+}
+

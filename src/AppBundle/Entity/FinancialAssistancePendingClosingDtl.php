@@ -1,0 +1,1133 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
+/**
+ * FinancialAssistancePendingClosingDtl
+ *
+ * @ORM\Table(name="tbl_fa_pending_closing_dtl")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FinancialAssistancePendingClosingDtlRepository")
+ */
+class FinancialAssistancePendingClosingDtl
+{
+   /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="hdr_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $hdrId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="trn_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $trnId;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="trn_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $trnNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="applicant_name", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $applicantName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="applicant_pro_voter_id", type="integer")
+     */
+    private $applicantProVoterId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beneficiary_name", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $beneficiaryName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="beneficiary_pro_voter_id", type="integer")
+     */
+    private $beneficiaryProVoterId;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="is_released", type="integer")
+     */
+    private $isReleased;
+    
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="is_closed", type="integer")
+     */
+    private $isClosed;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="closed_date", type="string", length=15)
+     */
+    private $closedDate;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="contact_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $contactNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hospital_name", type="string", length=150)
+     */
+    private $hospitalName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jpm_id_no", type="string", length=100)
+     */
+    private $jpmIdNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $municipalityNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="barangay_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $barangayNo;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="type_of_asst", type="string")
+     * @Assert\NotBlank()
+     */
+    private $typeOfAsst;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="endorsed_by", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $endorsedBy;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="trn_date", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $trnDate;
+
+     /**
+     * @var float
+     *
+     * @ORM\Column(name="projected_amt", type="float", scale=2)
+     */
+    private $projectedAmt;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="granted_amt", type="float", scale=2)
+     */
+    private $grantedAmt;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="release_date", type="string", length=15)
+     */
+    private $releaseDate;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="releasing_office", type="string", length = 150)
+     */
+    private $releasingOffice;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="received_by", type="string", length=150)
+     */
+    private $receivedBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="personnel", type="string", length = 150)
+     */
+    private $personnel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="req_type", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $reqType;
+
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_dswd_medical", type="integer", scale = 1)
+     */
+    private $isDswdMedical;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_dswd_opd", type="integer", scale = 1)
+     */
+    private $isDswdOpd;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_doh_maip_medical", type="integer", scale = 1)
+     */
+    private $isDohMaipMedical;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_doh_maip_opd", type="integer", scale = 1)
+     */
+    private $isDohMaipOpd;
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="posted_date", type="string", length=15)
+     */
+    private $postedDate;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="posted_by", type="string", length = 150)
+     */
+    private $postedBy;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="created_by", type="string", length=150)
+     */
+    private $createdBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=255)
+     */
+    private $remarks;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     */
+    private $status;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set hdrId
+     *
+     * @param integer $hdrId
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setHdrId($hdrId)
+    {
+        $this->hdrId = $hdrId;
+
+        return $this;
+    }
+
+    /**
+     * Get hdrId
+     *
+     * @return integer
+     */
+    public function getHdrId()
+    {
+        return $this->hdrId;
+    }
+
+    /**
+     * Set trnId
+     *
+     * @param integer $trnId
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setTrnId($trnId)
+    {
+        $this->trnId = $trnId;
+
+        return $this;
+    }
+
+    /**
+     * Get trnId
+     *
+     * @return integer
+     */
+    public function getTrnId()
+    {
+        return $this->trnId;
+    }
+
+    /**
+     * Set trnNo
+     *
+     * @param string $trnNo
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setTrnNo($trnNo)
+    {
+        $this->trnNo = $trnNo;
+
+        return $this;
+    }
+
+    /**
+     * Get trnNo
+     *
+     * @return string
+     */
+    public function getTrnNo()
+    {
+        return $this->trnNo;
+    }
+
+    /**
+     * Set applicantName
+     *
+     * @param string $applicantName
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setApplicantName($applicantName)
+    {
+        $this->applicantName = $applicantName;
+
+        return $this;
+    }
+
+    /**
+     * Get applicantName
+     *
+     * @return string
+     */
+    public function getApplicantName()
+    {
+        return $this->applicantName;
+    }
+
+    /**
+     * Set applicantProVoterId
+     *
+     * @param integer $applicantProVoterId
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setApplicantProVoterId($applicantProVoterId)
+    {
+        $this->applicantProVoterId = $applicantProVoterId;
+
+        return $this;
+    }
+
+    /**
+     * Get applicantProVoterId
+     *
+     * @return integer
+     */
+    public function getApplicantProVoterId()
+    {
+        return $this->applicantProVoterId;
+    }
+
+    /**
+     * Set beneficiaryName
+     *
+     * @param string $beneficiaryName
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setBeneficiaryName($beneficiaryName)
+    {
+        $this->beneficiaryName = $beneficiaryName;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficiaryName
+     *
+     * @return string
+     */
+    public function getBeneficiaryName()
+    {
+        return $this->beneficiaryName;
+    }
+
+    /**
+     * Set beneficiaryProVoterId
+     *
+     * @param integer $beneficiaryProVoterId
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setBeneficiaryProVoterId($beneficiaryProVoterId)
+    {
+        $this->beneficiaryProVoterId = $beneficiaryProVoterId;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficiaryProVoterId
+     *
+     * @return integer
+     */
+    public function getBeneficiaryProVoterId()
+    {
+        return $this->beneficiaryProVoterId;
+    }
+
+    /**
+     * Set isReleased
+     *
+     * @param integer $isReleased
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setIsReleased($isReleased)
+    {
+        $this->isReleased = $isReleased;
+
+        return $this;
+    }
+
+    /**
+     * Get isReleased
+     *
+     * @return integer
+     */
+    public function getIsReleased()
+    {
+        return $this->isReleased;
+    }
+
+    /**
+     * Set isClosed
+     *
+     * @param integer $isClosed
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setIsClosed($isClosed)
+    {
+        $this->isClosed = $isClosed;
+
+        return $this;
+    }
+
+    /**
+     * Get isClosed
+     *
+     * @return integer
+     */
+    public function getIsClosed()
+    {
+        return $this->isClosed;
+    }
+
+    /**
+     * Set closedDate
+     *
+     * @param string $closedDate
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setClosedDate($closedDate)
+    {
+        $this->closedDate = $closedDate;
+
+        return $this;
+    }
+
+    /**
+     * Get closedDate
+     *
+     * @return string
+     */
+    public function getClosedDate()
+    {
+        return $this->closedDate;
+    }
+
+    /**
+     * Set contactNo
+     *
+     * @param string $contactNo
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setContactNo($contactNo)
+    {
+        $this->contactNo = $contactNo;
+
+        return $this;
+    }
+
+    /**
+     * Get contactNo
+     *
+     * @return string
+     */
+    public function getContactNo()
+    {
+        return $this->contactNo;
+    }
+
+    /**
+     * Set hospitalName
+     *
+     * @param string $hospitalName
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setHospitalName($hospitalName)
+    {
+        $this->hospitalName = $hospitalName;
+
+        return $this;
+    }
+
+    /**
+     * Get hospitalName
+     *
+     * @return string
+     */
+    public function getHospitalName()
+    {
+        return $this->hospitalName;
+    }
+
+    /**
+     * Set jpmIdNo
+     *
+     * @param string $jpmIdNo
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setJpmIdNo($jpmIdNo)
+    {
+        $this->jpmIdNo = $jpmIdNo;
+
+        return $this;
+    }
+
+    /**
+     * Get jpmIdNo
+     *
+     * @return string
+     */
+    public function getJpmIdNo()
+    {
+        return $this->jpmIdNo;
+    }
+
+    /**
+     * Set municipalityNo
+     *
+     * @param string $municipalityNo
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setMunicipalityNo($municipalityNo)
+    {
+        $this->municipalityNo = $municipalityNo;
+
+        return $this;
+    }
+
+    /**
+     * Get municipalityNo
+     *
+     * @return string
+     */
+    public function getMunicipalityNo()
+    {
+        return $this->municipalityNo;
+    }
+
+    /**
+     * Set barangayNo
+     *
+     * @param string $barangayNo
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setBarangayNo($barangayNo)
+    {
+        $this->barangayNo = $barangayNo;
+
+        return $this;
+    }
+
+    /**
+     * Get barangayNo
+     *
+     * @return string
+     */
+    public function getBarangayNo()
+    {
+        return $this->barangayNo;
+    }
+
+    /**
+     * Set typeOfAsst
+     *
+     * @param string $typeOfAsst
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setTypeOfAsst($typeOfAsst)
+    {
+        $this->typeOfAsst = $typeOfAsst;
+
+        return $this;
+    }
+
+    /**
+     * Get typeOfAsst
+     *
+     * @return string
+     */
+    public function getTypeOfAsst()
+    {
+        return $this->typeOfAsst;
+    }
+
+    /**
+     * Set endorsedBy
+     *
+     * @param string $endorsedBy
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setEndorsedBy($endorsedBy)
+    {
+        $this->endorsedBy = $endorsedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get endorsedBy
+     *
+     * @return string
+     */
+    public function getEndorsedBy()
+    {
+        return $this->endorsedBy;
+    }
+
+    /**
+     * Set trnDate
+     *
+     * @param string $trnDate
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setTrnDate($trnDate)
+    {
+        $this->trnDate = $trnDate;
+
+        return $this;
+    }
+
+    /**
+     * Get trnDate
+     *
+     * @return string
+     */
+    public function getTrnDate()
+    {
+        return $this->trnDate;
+    }
+
+    /**
+     * Set projectedAmt
+     *
+     * @param float $projectedAmt
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setProjectedAmt($projectedAmt)
+    {
+        $this->projectedAmt = $projectedAmt;
+
+        return $this;
+    }
+
+    /**
+     * Get projectedAmt
+     *
+     * @return float
+     */
+    public function getProjectedAmt()
+    {
+        return $this->projectedAmt;
+    }
+
+    /**
+     * Set grantedAmt
+     *
+     * @param float $grantedAmt
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setGrantedAmt($grantedAmt)
+    {
+        $this->grantedAmt = $grantedAmt;
+
+        return $this;
+    }
+
+    /**
+     * Get grantedAmt
+     *
+     * @return float
+     */
+    public function getGrantedAmt()
+    {
+        return $this->grantedAmt;
+    }
+
+    /**
+     * Set releaseDate
+     *
+     * @param string $releaseDate
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setReleaseDate($releaseDate)
+    {
+        $this->releaseDate = $releaseDate;
+
+        return $this;
+    }
+
+    /**
+     * Get releaseDate
+     *
+     * @return string
+     */
+    public function getReleaseDate()
+    {
+        return $this->releaseDate;
+    }
+
+    /**
+     * Set releasingOffice
+     *
+     * @param string $releasingOffice
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setReleasingOffice($releasingOffice)
+    {
+        $this->releasingOffice = $releasingOffice;
+
+        return $this;
+    }
+
+    /**
+     * Get releasingOffice
+     *
+     * @return string
+     */
+    public function getReleasingOffice()
+    {
+        return $this->releasingOffice;
+    }
+
+    /**
+     * Set receivedBy
+     *
+     * @param string $receivedBy
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setReceivedBy($receivedBy)
+    {
+        $this->receivedBy = $receivedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get receivedBy
+     *
+     * @return string
+     */
+    public function getReceivedBy()
+    {
+        return $this->receivedBy;
+    }
+
+    /**
+     * Set personnel
+     *
+     * @param string $personnel
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setPersonnel($personnel)
+    {
+        $this->personnel = $personnel;
+
+        return $this;
+    }
+
+    /**
+     * Get personnel
+     *
+     * @return string
+     */
+    public function getPersonnel()
+    {
+        return $this->personnel;
+    }
+
+    /**
+     * Set reqType
+     *
+     * @param string $reqType
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setReqType($reqType)
+    {
+        $this->reqType = $reqType;
+
+        return $this;
+    }
+
+    /**
+     * Get reqType
+     *
+     * @return string
+     */
+    public function getReqType()
+    {
+        return $this->reqType;
+    }
+
+    /**
+     * Set isDswdMedical
+     *
+     * @param integer $isDswdMedical
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setIsDswdMedical($isDswdMedical)
+    {
+        $this->isDswdMedical = $isDswdMedical;
+
+        return $this;
+    }
+
+    /**
+     * Get isDswdMedical
+     *
+     * @return integer
+     */
+    public function getIsDswdMedical()
+    {
+        return $this->isDswdMedical;
+    }
+
+    /**
+     * Set isDswdOpd
+     *
+     * @param integer $isDswdOpd
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setIsDswdOpd($isDswdOpd)
+    {
+        $this->isDswdOpd = $isDswdOpd;
+
+        return $this;
+    }
+
+    /**
+     * Get isDswdOpd
+     *
+     * @return integer
+     */
+    public function getIsDswdOpd()
+    {
+        return $this->isDswdOpd;
+    }
+
+    /**
+     * Set isDohMaipMedical
+     *
+     * @param integer $isDohMaipMedical
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setIsDohMaipMedical($isDohMaipMedical)
+    {
+        $this->isDohMaipMedical = $isDohMaipMedical;
+
+        return $this;
+    }
+
+    /**
+     * Get isDohMaipMedical
+     *
+     * @return integer
+     */
+    public function getIsDohMaipMedical()
+    {
+        return $this->isDohMaipMedical;
+    }
+
+    /**
+     * Set isDohMaipOpd
+     *
+     * @param integer $isDohMaipOpd
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setIsDohMaipOpd($isDohMaipOpd)
+    {
+        $this->isDohMaipOpd = $isDohMaipOpd;
+
+        return $this;
+    }
+
+    /**
+     * Get isDohMaipOpd
+     *
+     * @return integer
+     */
+    public function getIsDohMaipOpd()
+    {
+        return $this->isDohMaipOpd;
+    }
+
+    /**
+     * Set postedDate
+     *
+     * @param string $postedDate
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setPostedDate($postedDate)
+    {
+        $this->postedDate = $postedDate;
+
+        return $this;
+    }
+
+    /**
+     * Get postedDate
+     *
+     * @return string
+     */
+    public function getPostedDate()
+    {
+        return $this->postedDate;
+    }
+
+    /**
+     * Set postedBy
+     *
+     * @param string $postedBy
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setPostedBy($postedBy)
+    {
+        $this->postedBy = $postedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get postedBy
+     *
+     * @return string
+     */
+    public function getPostedBy()
+    {
+        return $this->postedBy;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return FinancialAssistancePendingClosingDtl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+}

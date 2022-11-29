@@ -1,0 +1,140 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <br/>
+    {% if not form.vars.valid %}
+        <div class="alert alert-danger">
+            <i class="fa fa-frown-o fa-lg"></i> You have some form errors, please check below.
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <div class="caption">
+                        Edit Module </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="{{ path('edit_module', { module_id : module.Id}) }}" method="POST" class="form-horizontal" novalidate="novalidate">
+
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br/>
+                                    <div class="form-group {% if not form.moduleName.vars.valid %}has-error{% endif %}">
+                                        <label class="col-md-2 control-label">Module Name <span class="required" > * </span></label>
+                                        <div class="col-md-8">
+                                            {{ form_widget(form.moduleName, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus'}}) }}
+                                            {{ form_errors(form.moduleName) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group {% if not form.moduleLabel.vars.valid %}has-error{% endif %}">
+                                        <label class="col-md-2 control-label">Module Label <span class="required" > * </span></label>
+                                        <div class="col-md-8">
+                                            {{ form_widget(form.moduleLabel, {'attr' : {'class' : 'form-control'}}) }}
+                                            {{ form_errors(form.moduleLabel) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group {% if not form.moduleRoute.vars.valid %}has-error{% endif %}">
+                                        <label class="col-md-2 control-label">Module Route <span class="required" > * </span></label>
+                                        <div class="col-md-8">
+                                            {{ form_widget(form.moduleRoute, {'attr' : {'class' : 'form-control'}}) }}
+                                            {{ form_errors(form.moduleRoute) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group {% if not form.moduleIcon.vars.valid %}has-error{% endif %}">
+                                        <label class="col-md-2 control-label">Module Icon <span class="required" > * </span></label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" id="btn-icon" class="btn btn-default" data-placement="top" data-iconset="fontawesome" data-icon="{{ form.moduleIcon.vars.value }}" role="iconpicker"></button>
+                                                </span>
+                                                {{ form_widget(form.moduleIcon, {
+                                                    'attr' : {
+                                                        'class' : 'form-control',
+                                                        'readOnly' : 'readOnly' }
+                                                    })
+                                                }}
+
+                                            </div>
+                                            {{ form_errors(form.moduleIcon) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group {% if not form.moduleDesc.vars.valid %}has-error{% endif %}">
+                                        <label class="col-md-2 control-label">Module Description </span></label>
+                                        <div class="col-md-8">
+                                            {{ form_widget(form.moduleDesc, {'attr' : {'class' : 'form-control', 'rows' : '5'}}) }}
+                                            {{ form_errors(form.moduleDesc) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group {% if not form.sortOrder.vars.valid %}has-error{% endif %}">
+                                        <label class="col-md-2 control-label">Sort <span class="required" > * </span></label>
+                                        <div class="col-md-4">
+                                            {{ form_widget(form.sortOrder, {'attr' : {'class' : 'form-control'}}) }}
+                                            {{ form_errors(form.sortOrder) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {#<div class="col-md-6">#}
+                                    {#<h3 class="form-section">Module Permission</h3>#}
+                                    {#<div class="form-group">#}
+                                        {#<label class="col-md-3 control-label">Permission</label>#}
+                                        {#<div class="col-md-7">#}
+                                            {#<div class="mt-checkbox-list">#}
+                                                {#{% for permission in form_permission.permissionName %}#}
+                                                    {#<label class="mt-checkbox mt-checkbox-outline">#}
+                                                        {#<input type="checkbox" id="{{ permission.vars.id }}" name="{{ permission.vars.full_name }}" value="{{ permission.vars.value }}" {% if kenn.in_multiarray(permission.vars.value, module_permission) %} checked="checked"{% endif %}>#}
+                                                        {#{{ permission.vars.label }}#}
+                                                        {#<span></span>#}
+                                                    {#</label>#}
+                                                {#{% endfor %}#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            </div>
+
+                        </div>
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" name="save" class="btn btn-primary"><i class="icon-check"></i> Save Changes</button>
+                                    <button type="submit" name="save_return" class="btn btn-primary"><i class="icon-grid"></i> Save Changes & return to list</button>
+                                    <a href="{{ path('manage_module') }}" class="btn btn-danger"><i class=" icon-close"></i> Cancel</a>
+                                    {{ form_widget(form._token) }}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bootstrap-iconpicker/css/bootstrap-iconpicker.min.css', 'plugins') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bootstrap-iconpicker/js/iconset/iconset-fontawesome-4.4.0.min.js', 'plugins')}}" ></script>
+    <script type="text/javascript" src="{{ asset('bootstrap-iconpicker/js/bootstrap-iconpicker.min.js', 'plugins')}}" ></script>
+
+    <script type="text/javascript">
+        var btn_icon = $('#btn-icon');
+        btn_icon.attr('data-icon','');
+        btn_icon.on('change',function(e){
+            $('#{{ form.moduleIcon.vars.id }}').val(e.icon);
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,148 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
+/**
+ * RecruitmentSummary
+ *
+ * @ORM\Table(name="tbl_recruitment_summary")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RecruitmentSummaryRepository")
+ * @UniqueEntity(fields={"provinceCode","municipalityNo", "brgyNo", "precinctNo" },message="This precinct already exist.",errorPath="precinctNo")
+ */
+class RecruitmentSummary
+{
+      /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="elect_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $electId;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pro_id", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $proId;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="province_code", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $provinceCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="municipality_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $municipalityNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="brgy_no", type="string", length=15)
+     * @Assert\NotBlank()
+     */
+    private $brgyNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="precinct_no", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $precinctNo;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_recruits", type="integer")
+     */
+    private $totalRecruits;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_has_cellphone", type="integer")
+     */
+    private $totalHasCellphone;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_is_1", type="integer")
+     */
+    private $totalIs1;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="total_is_2", type="integer")
+     */
+    private $totalIs2;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="total_is_3", type="integer")
+     */
+    private $totalIs3;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_is_4", type="integer")
+     */
+    private $totalIs4;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_is_5", type="integer")
+     */
+    private $totalIs5;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_is_6", type="integer")
+     */
+    private $totalIs6;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="total_is_7", type="integer")
+     */
+    private $totalIs7;
+
+     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+
+    private $createdAt;
+}
+

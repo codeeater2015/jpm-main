@@ -1,0 +1,65 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * Project
+ *
+ * @ORM\Table(name="tbl_project")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")
+ * @UniqueEntity(fields={"prodName"},message="This project already exists.", errorPath="prodName")
+ */
+class Project
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="pro_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $proId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pro_name", type="string", length=150)
+     * @Assert\NotBlank()
+     */
+    private $proName;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="pro_desc", type="string", length=256)
+     */
+    private $proDesc;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="province_code", type="string", length=30)
+     * @Assert\NotBlank()
+     */
+    private $provinceCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=256)
+     */
+    private $remarks;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=3)
+     */
+    private $status;
+
+}
+

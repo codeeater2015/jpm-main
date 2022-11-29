@@ -1,0 +1,105 @@
+<div class="modal-dialog modal-custom-55">
+    <div class="modal-content">
+        <form class="form-horizontal" action="#">
+            <div class="modal-header bg-grey-mint bg-font-grey-mint">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title"><i class="fa fa-eye"></i> View User Info</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="form_user_alert"></div>
+                        <div class="form-body portlet-form" >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3 class="form-section bold">Personal Info</h3>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Registered Date :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ (user.dateRegistered == "") ? "N/A" : user.dateRegistered|date("F d,Y \\a\\t g:iA") }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Name :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ user.name }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Gender :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ user.gender }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Email :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ user.email }}  </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Contact No. : </label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ user.contactNo }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Description : </label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ user.description }} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="form-section bold">Account Info</h3>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Last Login :</label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ (user.lastLogin == "") ? "N/A" : user.lastLogin|date("F d,Y \\a\\t g:iA") }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Group : </label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ user.group.groupName }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Username : </label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ user.username }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">isDefault : </label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ (user.isDefault == "") ? "N/A" :  user.isDefault}} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Status : </label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static "> {{ (user.isActive == 1) ? '<span class="label label-info ">Active</span>' : '<span class="label label-danger">Inactive</span>' }} </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Online : </label>
+                                        <div class="col-md-7">
+                                            <p class="form-control-static bold"> {{ (user.isOnline == "") ? "N/A" :  user.isOnline}} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" >
+                <div>
+                    <button type="button" class="btn btn-default" id="close" data-dismiss="modal"><i class="icon-close"></i> Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

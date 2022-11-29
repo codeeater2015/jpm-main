@@ -1,0 +1,40 @@
+<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+<li class="dropdown dropdown-extended dropdown-inbox" >
+    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <i class="icon-bell"></i>
+        {% if suspensions|length > 0 %}
+            <span class="badge badge-default"> {{ suspensions|length }} </span>
+        {% endif %}
+    </a>
+    <ul class="dropdown-menu ">
+        <li class="external">
+            <h3>
+                <span class="bold">{{ suspensions|length }}</span> suspension</h3>
+            {#<a href="#" id="view_all">View all</a>#}
+        </li>
+        <li>
+            <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                {% for suspension in suspensions %}
+                <li>
+                    <a href="#" class="view_notification" data-id="{{ suspension.dv_code }}" data-target="#notification" data-toggle="modal">
+                        <span class="photo">
+                            <span class="label label-warning">
+                                <i class="fa fa-bell-o"></i>
+                            </span>
+                        </span>
+                        <span class="subject">
+                            <span class="from"> Accounting </span>
+                            <span class="time">{{ suspension.suspension_date|ago }} </span>
+                        </span>
+                        <span class="message"> <b>{{ suspension.rc_code }} / {{ suspension.obr_desc }}</b> has been suspended.</span>
+                    </a>
+                </li>
+                {% else %}
+                    <h2 class="align-center">No Suspension</h2>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</li>
+
+

@@ -1,0 +1,38 @@
+{% extends "main.html.twig" %}
+{% block sidebar_close %}page-sidebar-closed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="component-container">
+                {{ include('tpl/_loading.html.twig')}}
+            </div>
+        </div>
+    </div
+{% endblock %}
+
+{% block isReact %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        window.userId = "{{ user.id }}";
+        window.hostIp = "{{ hostIp }}";
+        window.imgUrl = "{{ imgUrl }}";
+    </script>
+
+    {% if app.environment == "prod" %}
+        <script type="text/javascript" src="{{ asset('compiled/js/special-opt.react.min.js', 'compiled') }}"></script>
+    {% else %}
+        <script type="text/babel" src="{{ asset('scripts/special-opt/special-opt-new-member-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/special-opt/special-opt-detail-datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/special-opt/special-opt-detail-view-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/special-opt/special-opt-create-leader-modal.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/special-opt/special-opt-datatable.react.js', 'pages') }}"></script>
+        <script type="text/babel" src="{{ asset('scripts/special-opt/special-opt.react.js', 'pages') }}"></script>
+    {% endif %}
+{% endblock %}
